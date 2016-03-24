@@ -46,6 +46,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>.\SDL2-2.0.4\include;.\lua5.1\include;.\freeglut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\SDL2-2.0.4\lib\x86;.\lua5.1\lib;.\freeglut\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -79,15 +81,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="CameraMap.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="CameraMap.h" />
-    <ClInclude Include="InputManager.h" />
+    <ClCompile Include="main2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
