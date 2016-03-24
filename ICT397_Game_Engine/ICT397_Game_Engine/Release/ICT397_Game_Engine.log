@@ -1,4 +1,4 @@
-﻿Build started 24-Mar-16 10:57:10 PM.
+﻿Build started 24-Mar-16 11:06:38 PM.
      1>Project "K:\ICT397 - Advanced Games Design And Programming\ICT397ShooterProject\ICT397_Game_Engine\ICT397_Game_Engine\ICT397_Game_Engine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          G:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main2.cpp
@@ -12,4 +12,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.56
+Time Elapsed 00:00:00.65
