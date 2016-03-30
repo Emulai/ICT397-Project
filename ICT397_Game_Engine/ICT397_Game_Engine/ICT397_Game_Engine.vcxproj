@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\lua5.1\include;.\SDL2-2.0.4\include;.\freeglut\include;$(IncludePath)</IncludePath>
-    <LibraryPath>.\bass24\c;.\lua5.1\lib;.\SDL2-2.0.4\lib\x86;.\freeglut\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Libraries\lua5.1\include;.\Libraries\SDL2-2.0.4\include;.\Libraries\freeglut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Libraries\bass24\c;.\Libraries\lua5.1\lib;.\Libraries\SDL2-2.0.4\lib\x86;.\Libraries\freeglut\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
