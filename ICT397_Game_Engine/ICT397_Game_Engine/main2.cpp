@@ -46,6 +46,9 @@ cube from Chapter 4 */
 #include <stdlib.h>
 //#include <GL/glut.h> // using freeglut instead of glut
 #include <GL/freeglut.h>
+#include "Model/GameObject.h"
+
+GameObject frog;
 
 
 
@@ -148,6 +151,16 @@ main(int argc, char **argv)
     glutInit(&argc, argv);
 
 /* need both double buffering and z buffer */
+	
+	float x, y, z;
+
+	frog.TransformX(5);
+	frog.TransformY(10);
+	frog.TransformZ(90);
+
+	x = frog.TransformX();
+	y = frog.TransformY();
+	z = frog.TransformZ();
 
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(500, 500);
