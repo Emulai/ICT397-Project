@@ -48,8 +48,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\Libraries\lua5.1\include;.\Libraries\SDL2-2.0.4\include;.\Libraries\freeglut\include;$(IncludePath)</IncludePath>
-    <LibraryPath>.\Libraries\bass24\c;.\Libraries\lua5.1\lib;.\Libraries\SDL2-2.0.4\lib\x86;.\Libraries\freeglut\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\include;.\Libraries\lua5.1\include;.\Libraries\SDL2-2.0.4\include;.\Libraries\freeglut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Libraries\bass24\c;.\Libraries\lua5.1\lib;.\Libraries\SDL2-2.0.4\lib\x86;.\Libraries\freeglut\lib;.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -67,7 +67,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;SDL2.lib;SDL2main.lib;bass.lib;SDL2_image.lib;lua5.1.lib;luabindd.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;SDL2.lib;SDL2main.lib;bass.lib;SDL2_image.lib;lua5.1.lib;luabindd.lib;SDL2_mixer.lib;ozcollide.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
