@@ -1,47 +1,10 @@
 #include <math.h>
 #include <GL/glut.h>
 #include <time.h>
-#include <InputManager.h>
+//#include <InputManager.h>
 
-#pragma comment(lib, "lua.lib")
-#pragma comment(lib, "lualib.lib")
-
-
-
- 
-int main(int argc, char* argv[]) {
-
-	
-
-	// init GLUT and create window
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(100,100);
-	glutInitWindowSize(320,320);
-	glutCreateWindow("ICT397_Game_Engine");
-
-	// register callbacks
-	glutDisplayFunc(renderScene);
-	glutReshapeFunc(changeSize);
-	glutIdleFunc(renderScene);
-
-	glutIgnoreKeyRepeat(1);
-	glutKeyboardFunc(processNormalKeys);
-	glutSpecialFunc(pressKey);
-	glutSpecialUpFunc(releaseKey);
-
-	// here are the two new functions
-	glutMouseFunc(mouseButton);
-	glutMotionFunc(mouseMove);
-
-	// OpenGL init
-	glEnable(GL_DEPTH_TEST);
-
-	// enter GLUT event processing cycle
-	glutMainLoop();
-
-	return 1;
-}
+#pragma comment(lib, "lua5.1.lib")
+#pragma comment(lib, "luabindd.lib")
 
 #include <stdlib.h>
 #include <math.h>
@@ -142,23 +105,48 @@ void renderScene(void) {
 
 // Draw ground
 
-	glColor3f(0.9f, 0.9f, 0.9f);
-	glBegin(GL_QUADS);
-		glVertex3f(-100.0f, 0.0f, -100.0f);
+	glColor3f(0.0f, 0.9f, 0.9f);
+	glBegin(GL_POLYGON);
 		glVertex3f(-100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f, -100.0f);
+		glVertex3f( 0.0f,   0.0f,  100.0f);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+		glVertex3f(-100.0f, 0.0f,  0.0f);
 	glEnd();
 
-// Draw 36 SnowMen
+	glColor3f(0.9f, 0.0f, 0.9f);
+	glBegin(GL_POLYGON);
+		glVertex3f( 0.0f,   0.0f,  100.0f);
+		glVertex3f( 100.0f, 0.0f,  100.0f);
+		glVertex3f( 100.0f, 0.0f,  0.0f);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+	glEnd();
 
-	for(int i = -3; i < 3; i++)
-		for(int j=-3; j < 3; j++) {
+	glColor3f(0.9f, 0.9f, 0.0f);
+	glBegin(GL_POLYGON);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+		glVertex3f( 100.0f, 0.0f,  0.0f);
+		glVertex3f( 100.0f, 0.0f,  -100.0f);
+		glVertex3f( 0.0f,   0.0f,  -100.0f);
+	glEnd();
+
+	glColor3f(0.9f, 0.9f, 0.9f);
+	glBegin(GL_POLYGON);
+		glVertex3f(-100.0f, 0.0f,  0.0f);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+		glVertex3f( 0.0f,   0.0f,  -100.0f);
+		glVertex3f(-100.0f, 0.0f,  -100.0f);
+	glEnd();
+
+/*// Draw 36 SnowMen
+
+	for(int i = -3; i < 3; i++){
+		for(int j=-3; j < 3; j++){
                      glPushMatrix();
                      glTranslatef(i*10.0,0,j * 10.0);
                      drawSnowMan();
                      glPopMatrix();
-               }
+        }
+	}*/
         glutSwapBuffers();
 } 
 
@@ -214,8 +202,42 @@ void mouseButton(int button, int state, int x, int y) {
 	}
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char* argv[]) {
 
+	
+
+	// init GLUT and create window
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+	glutInitWindowPosition(100,100);
+	glutInitWindowSize(320,320);
+	glutCreateWindow("ICT397_Game_Engine");
+
+	// register callbacks
+	glutDisplayFunc(renderScene);
+	glutReshapeFunc(changeSize);
+	glutIdleFunc(renderScene);
+
+	glutIgnoreKeyRepeat(1);
+	glutKeyboardFunc(processNormalKeys);
+	glutSpecialFunc(pressKey);
+	glutSpecialUpFunc(releaseKey);
+
+	// here are the two new functions
+	glutMouseFunc(mouseButton);
+	glutMotionFunc(mouseMove);
+
+	// OpenGL init
+	glEnable(GL_DEPTH_TEST);
+
+	// enter GLUT event processing cycle
+	glutMainLoop();
+
+	return 1;
+}
+
+/*int main(int argc, char **argv) {
+	
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -244,4 +266,4 @@ int main(int argc, char **argv) {
 	glutMainLoop();
 
 	return 1;
-}
+}*/
