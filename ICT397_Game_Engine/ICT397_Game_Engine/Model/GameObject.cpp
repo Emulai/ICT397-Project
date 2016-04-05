@@ -2,12 +2,25 @@
 
 GameObject::GameObject()
 {
+	m_transform.x = 0.0f;
+	m_transform.y = 0.0f;
+	m_transform.z = 0.0f;
 
+	m_rotation.x = 0.0f;
+	m_rotation.y = 0.0f;
+	m_rotation.z = 0.0f;
+
+	m_modelReference = -1;
 }
 
 /////////
 //Accessors
 /////////
+
+Vector3 GameObject::Transform() const
+{
+	return m_transform;
+}
 
 float GameObject::TransformX() const
 {
@@ -22,6 +35,11 @@ float GameObject::TransformY() const
 float GameObject::TransformZ() const
 {
 	return m_transform.z;
+}
+
+Vector3 GameObject::Rotation() const
+{
+	return m_rotation;
 }
 
 float GameObject::RotationX() const
@@ -39,34 +57,19 @@ float GameObject::RotationZ() const
 	return m_rotation.z;
 }
 
-bool GameObject::IsStatic() const
+int GameObject::ModelReference() const
 {
-	return m_isStatic;
-}
-
-bool GameObject::IsPlayer() const
-{
-	return m_isPlayer;
-}
-
-int GameObject::ObjectHealth() const
-{
-	return m_objHealth;
-}
-
-string GameObject::ModelPath() const
-{
-	return m_modelPath;
-}
-
-string GameObject::AIPath() const
-{
-	return m_aiPath;
+	return m_modelReference;
 }
 
 /////////
 //Mutators
 /////////
+
+void GameObject::Transform(Vector3 t_transform)
+{
+	m_transform = t_transform;
+}
 
 void GameObject::TransformX(float t_transform)
 {
@@ -81,6 +84,11 @@ void GameObject::TransformY(float t_transform)
 void GameObject::TransformZ(float t_transform)
 {
 	m_transform.z = t_transform;
+}
+
+void GameObject::Rotation(Vector3 t_rotation)
+{
+	m_rotation = t_rotation;
 }
 
 void GameObject::RotationX(float t_rotation)
@@ -98,27 +106,7 @@ void GameObject::RotationZ(float t_rotation)
 	m_rotation.z = t_rotation;
 }
 
-void GameObject::IsStatic(bool t_isStatic)
+void GameObject::ModelReference(int t_modelPath)
 {
-	m_isStatic = t_isStatic;
-}
-
-void GameObject::IsPlayer(bool t_isPlayer)
-{
-	m_isPlayer = t_isPlayer;
-}
-
-void GameObject::ObjectHealth(int t_objHealth)
-{
-	m_objHealth = t_objHealth;
-}
-
-void GameObject::ModelPath(string t_modelPath)
-{
-	m_modelPath = t_modelPath;
-}
-
-void GameObject::AIPath(string t_aiPath)
-{
-	m_aiPath = t_aiPath;
+	m_modelReference = t_modelPath;
 }
