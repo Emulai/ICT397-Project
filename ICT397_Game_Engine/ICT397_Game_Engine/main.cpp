@@ -9,6 +9,12 @@
 #include <stdlib.h>
 #include <math.h>
 
+using namespace std;
+
+#include "Controller\Controller.h"
+
+Controller g_controller;
+
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
@@ -88,7 +94,16 @@ void computePos(float deltaMove) {
 	z += deltaMove * lz * 0.1f;
 }
 
+bool viewSet = false;
+
 void renderScene(void) {
+
+	if (!viewSet)
+	{
+		g_controller.ModelTest();
+		viewSet = true;
+	}
+	
 
 	if (deltaMove)
 		computePos(deltaMove);
@@ -210,7 +225,7 @@ int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
-	glutInitWindowSize(320,320);
+	glutInitWindowSize(1280,900);
 	glutCreateWindow("ICT397_Game_Engine");
 
 	// register callbacks

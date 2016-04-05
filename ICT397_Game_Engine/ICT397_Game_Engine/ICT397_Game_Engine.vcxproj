@@ -11,11 +11,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Controller\Controller.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model\GameObject.cpp" />
+    <ClCompile Include="Model\Model.cpp" />
+    <ClCompile Include="Model\ObjectType.cpp" />
+    <ClCompile Include="View\View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Controller\Controller.h" />
     <ClInclude Include="Model\GameObject.h" />
+    <ClInclude Include="Model\Model.h" />
+    <ClInclude Include="Model\ObjectType.h" />
+    <ClInclude Include="View\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BEA0A289-C95A-4304-A75C-12EB450713C5}</ProjectGuid>
@@ -48,8 +56,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\include;.\Libraries\lua5.1\include;.\Libraries\SDL2-2.0.4\include;.\Libraries\freeglut\include;$(IncludePath)</IncludePath>
-    <LibraryPath>.\Libraries\bass24\c;.\Libraries\lua5.1\lib;.\Libraries\SDL2-2.0.4\lib\x86;.\Libraries\freeglut\lib;.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Libraries\bullet3-2.83.7\bullet3-2.83.7\src;.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\include;.\Libraries\lua5.1\include;.\Libraries\SDL2-2.0.4\include;.\Libraries\freeglut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Libraries\bullet3-2.83.7\bullet3-2.83.7\lib;.\Libraries\bass24\c;.\Libraries\lua5.1\lib;.\Libraries\SDL2-2.0.4\lib\x86;.\Libraries\freeglut\lib;.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -67,7 +75,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;SDL2.lib;SDL2main.lib;bass.lib;SDL2_image.lib;lua5.1.lib;luabindd.lib;SDL2_mixer.lib;ozcollide.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;SDL2.lib;SDL2main.lib;bass.lib;SDL2_image.lib;lua5.1.lib;luabindd.lib;SDL2_mixer.lib;ozcollide.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletFileLoader_Debug.lib;BulletInverseDynamics_Debug.lib;BulletInverseDynamicsUtils_Debug.lib;BulletSoftBody_Debug.lib;BulletWorldImporter_Debug.lib;BulletXmlWorldImporter_Debug.lib;ConvexDecomposition_Debug.lib;GIMPACTUtils_Debug.lib;gtest_Debug.lib;gwen_Debug.lib;HACD_Debug.lib;LinearMath_Debug.lib;OpenGLWindow_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
