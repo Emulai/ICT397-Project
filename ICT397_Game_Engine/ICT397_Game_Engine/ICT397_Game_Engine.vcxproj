@@ -14,6 +14,7 @@
     <ClCompile Include="Controller\Controller.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model\GameObject.cpp" />
+    <ClCompile Include="Model\Memento.cpp" />
     <ClCompile Include="Model\Model.cpp" />
     <ClCompile Include="Model\ObjectType.cpp" />
     <ClCompile Include="View\View.cpp" />
@@ -21,6 +22,7 @@
   <ItemGroup>
     <ClInclude Include="Controller\Controller.h" />
     <ClInclude Include="Model\GameObject.h" />
+    <ClInclude Include="Model\Memento.h" />
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="Model\ObjectType.h" />
     <ClInclude Include="View\View.h" />
