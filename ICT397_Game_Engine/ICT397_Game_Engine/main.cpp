@@ -1,25 +1,52 @@
+
+//Library Headers
 #include <math.h>
-#include <GL/glut.h>
+#include <GL/glut.h> //
+#include <stdlib.h> //Standard library - c library
+#include <glm/glm.hpp> //GLM 0.9.5 library - Open GL Mathematics
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+//Class Headers
+#include "Controller\Controller.h"
+#include "TargetCamera.h"
+
 #include <time.h>
 //#include <InputManager.h>
 
 #pragma comment(lib, "lua5.1.lib")
 #pragma comment(lib, "luabindd.lib")
 
-#include <stdlib.h>
-#include <math.h>
-
 using namespace std;
+using namespace glm;
 
-#include "Controller\Controller.h"
+
 
 Controller g_controller;
+TCamera g_cam;
+
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
 #endif
+
+float dt = 0; //delta time
+const float MOVE_SPEED = 0.125f; //movespeed of camera
+
+const int W = 87;
+const int w = 119;
+const int S = 83;
+const int s = 115;
+const int A = 65;
+const int a = 97;
+const int D = 68;
+const int d = 100;
+const int G = 71;
+const int g = 103;
+const int H = 72;
+const int h = 104;
 
 // angle of rotation for the camera direction
 float angle = 0.0f;
@@ -172,18 +199,56 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
 } 
 
 void pressKey(int key, int xx, int yy) {
+	bool bKeyPressed = false;
+	float dx = 0, dz = 0;
 
-       switch (key) {
-             case GLUT_KEY_UP : deltaMove = 0.5f; break;
-             case GLUT_KEY_DOWN : deltaMove = -0.5f; break;
-       }
+    switch (key) {
+            case W : 
+			case w :
+				dz += (MOVE_SPEED*dt);
+				bKeyPressed = true;
+				break;
+			case S : 
+			case s :
+				dz -= (MOVE_SPEED*dt);
+				bKeyPressed = true;
+				break;
+            case A : 
+			case a :
+				dx -= (MOVE_SPEED*dt);
+				bKeyPressed = true;
+				break;
+			case D : 
+			case d :
+				dx += (MOVE_SPEED*dt);
+				bKeyPressed = true;
+				break;
+           // case G : 
+			///case g :
+			//	g_cam.Lift(dt);
+			//	bKeyPressed = true;
+			//	break;
+			//case H : 
+		//	case h :
+		//		g_cam.Lift(-dt);
+		//		bKeyPressed = true;
+		//		break;
+    }
+	if(bKeyPressed)
+		g_cam.MoveCamera(dx, dz);
+
+	glutPostRedisplay();
+
 } 
 
 void releaseKey(int key, int x, int y) { 	
 
         switch (key) {
              case GLUT_KEY_UP :
-             case GLUT_KEY_DOWN : deltaMove = 0;break;
+				 ;
+				 break;
+             case GLUT_KEY_DOWN : ;
+				 break;;
         }
 } 
 
@@ -217,15 +282,16 @@ void mouseButton(int button, int state, int x, int y) {
 	}
 }
 
-int main(int argc, char* argv[]) {
 
-	
+
+
+int main(int argc, char* argv[]) {
 
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
-	glutInitWindowSize(1280,900);
+	glutInitWindowSize(1280,960);
 	glutCreateWindow("ICT397_Game_Engine");
 
 	// register callbacks
@@ -233,10 +299,11 @@ int main(int argc, char* argv[]) {
 	glutReshapeFunc(changeSize);
 	glutIdleFunc(renderScene);
 
-	glutIgnoreKeyRepeat(1);
 	glutKeyboardFunc(processNormalKeys);
-	glutSpecialFunc(pressKey);
-	glutSpecialUpFunc(releaseKey);
+	//glutSpecialFunc(processSpecialKeys);
+	//glutIgnoreKeyRepeat(1);
+
+	//glutSpecialUpFunc(releaseKey);
 
 	// here are the two new functions
 	glutMouseFunc(mouseButton);
@@ -250,8 +317,8 @@ int main(int argc, char* argv[]) {
 
 	return 1;
 }
-
-/*int main(int argc, char **argv) {
+/*
+int main(int argc, char **argv) {
 	
 	// init GLUT and create window
 	glutInit(&argc, argv);
