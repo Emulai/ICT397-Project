@@ -2,7 +2,7 @@
 
 View::View()
 {
-
+	hasHit=false;//for debug purposes
 }
 
 

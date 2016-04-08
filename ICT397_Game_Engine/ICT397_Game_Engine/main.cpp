@@ -28,13 +28,23 @@ float angle = 0.0f;
 float lx=0.0f,lz=-1.0f;
 
 // XZ position of the camera
-float x=0.0f, z=5.0f;
+float x=0.0f, z=0.0f;
 
 // the key states. These variables will be zero
 //when no key is being presses
 float deltaAngle = 0.0f;
 float deltaMove = 0;
 int xOrigin = -1;
+
+//Temporarily here for testing, see if can be moved into view later? -Daniel
+int windowHeight =900;
+int windowWidth =1280;
+
+//the state of the game
+//0 is the game, 1 is the menu
+short gameState = 0;
+short lastGameState = 0;
+bool A = false;
 
 void changeSize(int w, int h) {
 
@@ -43,7 +53,10 @@ void changeSize(int w, int h) {
 	if (h == 0)
 		h = 1;
 
-	float ratio =  w * 1.0 / h;
+	windowHeight = h;
+	windowWidth = w;
+
+	double ratio =  w * 1.0 / h;
 
 	// Use the Projection Matrix
 	glMatrixMode(GL_PROJECTION);
@@ -61,33 +74,6 @@ void changeSize(int w, int h) {
 	glMatrixMode(GL_MODELVIEW);
 }
 
-void drawSnowMan() {
-
-	glColor3f(1.0f, 1.0f, 1.0f);
-
-// Draw Body
-	glTranslatef(0.0f ,0.75f, 0.0f);
-	glutSolidSphere(0.75f,20,20);
-
-// Draw Head
-	glTranslatef(0.0f, 1.0f, 0.0f);
-	glutSolidSphere(0.25f,20,20);
-
-// Draw Eyes
-	glPushMatrix();
-	glColor3f(0.0f,0.0f,0.0f);
-	glTranslatef(0.05f, 0.10f, 0.18f);
-	glutSolidSphere(0.05f,10,10);
-	glTranslatef(-0.1f, 0.0f, 0.0f);
-	glutSolidSphere(0.05f,10,10);
-	glPopMatrix();
-
-// Draw Nose
-	glColor3f(1.0f, 0.5f , 0.5f);
-	glRotatef(0.0f,1.0f, 0.0f, 0.0f);
-	glutSolidCone(0.08f,0.5f,10,2);
-}
-
 void computePos(float deltaMove) {
 
 	x += deltaMove * lx * 0.1f;
@@ -97,86 +83,109 @@ void computePos(float deltaMove) {
 bool viewSet = false;
 
 void renderScene(void) {
-
-	if (!viewSet)
-	{
-		g_controller.ModelTest();
-		viewSet = true;
+	if(!A){
+		cout << "reached renderScene" <<endl;
+		A=true;
 	}
+
+	if(gameState == 0){//ie. game state
+		if(lastGameState !=0){//debug stuff
+			cout << "gameState == 0" <<endl;
+			lastGameState=0;
+		}
+
+		if (!viewSet)
+		{
+			g_controller.ModelTest();
+			viewSet = true;
+		}
 	
 
-	if (deltaMove)
-		computePos(deltaMove);
+		if (deltaMove)
+			computePos(deltaMove);
 
-	// Clear Color and Depth Buffers
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		// Clear Color and Depth Buffers
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	// Reset transformations
-	glLoadIdentity();
-	// Set the camera
-	gluLookAt(	x, 1.0f, z,
-			x+lx, 1.0f,  z+lz,
-			0.0f, 1.0f,  0.0f);
+		// Reset transformations
+		glLoadIdentity();
+		// Set the camera
+		gluLookAt(	x, 1.0f, z,
+				x+lx, 1.0f,  z+lz,
+				0.0f, 1.0f,  0.0f);
 
-// Draw ground
+	// Draw ground
 
-	glColor3f(0.0f, 0.9f, 0.9f);
-	glBegin(GL_POLYGON);
-		glVertex3f(-100.0f, 0.0f,  100.0f);
-		glVertex3f( 0.0f,   0.0f,  100.0f);
-		glVertex3f( 0.0f,   0.0f,  0.0f);
-		glVertex3f(-100.0f, 0.0f,  0.0f);
-	glEnd();
+		glColor3f(0.0f, 0.9f, 0.9f);
+		glBegin(GL_POLYGON);
+			glVertex3f(-100.0f, 0.0f,  100.0f);
+			glVertex3f( 0.0f,   0.0f,  100.0f);
+			glVertex3f( 0.0f,   0.0f,  0.0f);
+			glVertex3f(-100.0f, 0.0f,  0.0f);
+		glEnd();
 
-	glColor3f(0.9f, 0.0f, 0.9f);
-	glBegin(GL_POLYGON);
-		glVertex3f( 0.0f,   0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f,  0.0f);
-		glVertex3f( 0.0f,   0.0f,  0.0f);
-	glEnd();
+		glColor3f(0.9f, 0.0f, 0.9f);
+		glBegin(GL_POLYGON);
+			glVertex3f( 0.0f,   0.0f,  100.0f);
+			glVertex3f( 100.0f, 0.0f,  100.0f);
+			glVertex3f( 100.0f, 0.0f,  0.0f);
+			glVertex3f( 0.0f,   0.0f,  0.0f);
+		glEnd();
 
-	glColor3f(0.9f, 0.9f, 0.0f);
-	glBegin(GL_POLYGON);
-		glVertex3f( 0.0f,   0.0f,  0.0f);
-		glVertex3f( 100.0f, 0.0f,  0.0f);
-		glVertex3f( 100.0f, 0.0f,  -100.0f);
-		glVertex3f( 0.0f,   0.0f,  -100.0f);
-	glEnd();
+		glColor3f(0.9f, 0.9f, 0.0f);
+		glBegin(GL_POLYGON);
+			glVertex3f( 0.0f,   0.0f,  0.0f);
+			glVertex3f( 100.0f, 0.0f,  0.0f);
+			glVertex3f( 100.0f, 0.0f,  -100.0f);
+			glVertex3f( 0.0f,   0.0f,  -100.0f);
+		glEnd();
 
-	glColor3f(0.9f, 0.9f, 0.9f);
-	glBegin(GL_POLYGON);
-		glVertex3f(-100.0f, 0.0f,  0.0f);
-		glVertex3f( 0.0f,   0.0f,  0.0f);
-		glVertex3f( 0.0f,   0.0f,  -100.0f);
-		glVertex3f(-100.0f, 0.0f,  -100.0f);
-	glEnd();
+		glColor3f(0.9f, 0.9f, 0.9f);
+		glBegin(GL_POLYGON);
+			glVertex3f(-100.0f, 0.0f,  0.0f);
+			glVertex3f( 0.0f,   0.0f,  0.0f);
+			glVertex3f( 0.0f,   0.0f,  -100.0f);
+			glVertex3f(-100.0f, 0.0f,  -100.0f);
+		glEnd();
 
-/*// Draw 36 SnowMen
-
-	for(int i = -3; i < 3; i++){
-		for(int j=-3; j < 3; j++){
-                     glPushMatrix();
-                     glTranslatef(i*10.0,0,j * 10.0);
-                     drawSnowMan();
-                     glPopMatrix();
-        }
-	}*/
-        glutSwapBuffers();
+		glutSwapBuffers();
+	}else{//state==1 ie menu
+		if(lastGameState !=1){//debug stuff
+			cout << "gameState == 1" << endl;
+			lastGameState=1;
+		}
+		glClear(GL_COLOR_BUFFER_BIT);
+		g_controller.MenuCtrl(windowHeight, windowWidth);
+		glutSwapBuffers();
+	}
 } 
 
 void processNormalKeys(unsigned char key, int xx, int yy) { 	
 
-        if (key == 27)
-              exit(0);
+	if (key == 27){
+		if(gameState == 0){
+			cout << "Switching to menu state" <<endl;
+			gameState = 1;
+			glMatrixMode(GL_PROJECTION);
+			glLoadIdentity();
+			gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);// 0.0f, 0.0f, 1.0f
+			glDisable(GLUT_DEPTH);
+
+			glMatrixMode(GL_MODELVIEW);
+		}else{
+			gameState = 0;
+			cout << "Switching to game state" <<endl;
+			glEnable(GLUT_DEPTH);
+		}
+	}
 } 
 
 void pressKey(int key, int xx, int yy) {
 
-       switch (key) {
-             case GLUT_KEY_UP : deltaMove = 0.5f; break;
-             case GLUT_KEY_DOWN : deltaMove = -0.5f; break;
-       }
+	switch (key) {
+		case GLUT_KEY_UP : deltaMove = 0.5f; break;
+		case GLUT_KEY_DOWN : deltaMove = -0.5f; break;
+	}
 } 
 
 void releaseKey(int key, int x, int y) { 	
@@ -219,13 +228,11 @@ void mouseButton(int button, int state, int x, int y) {
 
 int main(int argc, char* argv[]) {
 
-	
-
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
-	glutInitWindowSize(1280,900);
+	glutInitWindowSize(windowWidth, windowHeight);
 	glutCreateWindow("ICT397_Game_Engine");
 
 	// register callbacks

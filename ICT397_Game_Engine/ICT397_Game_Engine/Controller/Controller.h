@@ -1,6 +1,8 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+#include<iostream>
+
 #include "..\View\View.h"
 #include "..\Model\Model.h"
 
@@ -30,6 +32,14 @@ public:
 	//INTERACTION with menu here
 	//Menu DISPLAY is in View
 	/////////////////////
+	bool hasHit;
+	void MenuCtrl(int windowHeight, int windowWidth){
+		if(!hasHit){
+			std::cout << "hit MenuCtrl" << std::endl;
+			hasHit=true;
+		}
+		m_view.MenuView(windowHeight, windowWidth);
+	}
 
 private:
 

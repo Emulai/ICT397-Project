@@ -1,6 +1,9 @@
 #ifndef VIEW_H
 #define VIEW_H
 
+#include <iostream>
+#include <GL/glut.h>
+
 class View
 {
 public:
@@ -29,6 +32,29 @@ public:
 	//Function to DISPLAY menus here
 	//Menu INTERACTION in Controller
 	//////////////////////////
+	bool hasHit;
+	void MenuView(int windowHeight, int windowWidth){
+		if(!hasHit){
+			std::cout << "hit MenuView" << std::endl;
+			hasHit=true;
+		}
+		//Set GL state
+		glPushMatrix();
+		gluLookAt(	0.0, 1.0f, 0.0,
+					0.0, 1.0f,  -1.0,
+					0.0f, 1.0f,  0.0f);
+
+		glColor3f(0.5f,0.5f,0.5f);
+		glBegin(GL_QUADS);
+			glVertex3i(0, 0, 0.0);
+			glVertex3i(0, windowHeight, 0.0);
+			glVertex3i(windowWidth, windowHeight, 0.0);
+			glVertex3i(windowWidth, 0, 0.0);
+		glEnd();
+
+		
+		glPopMatrix();
+	}
 
 private:
 

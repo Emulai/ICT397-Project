@@ -2,6 +2,7 @@
 
 Controller::Controller()
 {
+	hasHit=false;//for debug purposes
 	m_model.SetView(&m_view);
 }
 
