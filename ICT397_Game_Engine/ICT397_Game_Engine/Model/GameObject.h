@@ -1,8 +1,6 @@
 #ifndef GameObject_H
 #define GameObject_H
 
-#include <string>
-
 using namespace std;
 
 struct Vector3 {float x, y, z;};

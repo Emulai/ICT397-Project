@@ -1,26 +1,24 @@
-﻿Build started 5/04/2016 7:38:17 PM.
+﻿Build started 10/04/2016 8:13:26 PM.
      1>Project "D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\ICT397_Game_Engine\ICT397_Game_Engine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Installed Programs\Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Controller\Controller.cpp Model\Model.cpp Model\ObjectType.cpp View\View.cpp main.cpp
-         View.cpp
-         Model.cpp
-         Generating Code...
-         Compiling...
-         Controller.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         ObjectType.cpp
-         main.cpp
+         D:\Installed Programs\Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Model\ObjectLoader\ObjViewer\ObjLoader.cpp
+         ObjLoader.cpp
        Link:
-         D:\Installed Programs\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe" /INCREMENTAL /NOLOGO opengl32.lib glu32.lib glut32.lib SDL2.lib SDL2main.lib bass.lib SDL2_image.lib lua5.1.lib luabindd.lib SDL2_mixer.lib ozcollide.lib Bullet2FileLoader_Debug.lib Bullet3Collision_Debug.lib Bullet3Common_Debug.lib Bullet3Dynamics_Debug.lib Bullet3Geometry_Debug.lib Bullet3OpenCL_clew_Debug.lib BulletCollision_Debug.lib BulletDynamics_Debug.lib BulletFileLoader_Debug.lib BulletInverseDynamics_Debug.lib BulletInverseDynamicsUtils_Debug.lib BulletSoftBody_Debug.lib BulletWorldImporter_Debug.lib BulletXmlWorldImporter_Debug.lib ConvexDecomposition_Debug.lib GIMPACTUtils_Debug.lib gtest_Debug.lib gwen_Debug.lib HACD_Debug.lib LinearMath_Debug.lib OpenGLWindow_Debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.lib" /MACHINE:X86 Debug\Controller.obj
+         D:\Installed Programs\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe" /INCREMENTAL /NOLOGO SOIL.lib opengl32.lib glu32.lib glut32.lib SDL2.lib SDL2main.lib bass.lib SDL2_image.lib lua5.1.lib luabindd.lib SDL2_mixer.lib ozcollide.lib Bullet2FileLoader_Debug.lib Bullet3Collision_Debug.lib Bullet3Common_Debug.lib Bullet3Dynamics_Debug.lib Bullet3Geometry_Debug.lib Bullet3OpenCL_clew_Debug.lib BulletCollision_Debug.lib BulletDynamics_Debug.lib BulletFileLoader_Debug.lib BulletInverseDynamics_Debug.lib BulletInverseDynamicsUtils_Debug.lib BulletSoftBody_Debug.lib BulletWorldImporter_Debug.lib BulletXmlWorldImporter_Debug.lib ConvexDecomposition_Debug.lib GIMPACTUtils_Debug.lib gtest_Debug.lib gwen_Debug.lib HACD_Debug.lib LinearMath_Debug.lib OpenGLWindow_Debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.lib" /MACHINE:X86 Debug\Controller.obj
          Debug\main.obj
          Debug\GameObject.obj
          Debug\Model.obj
+         Debug\ObjLoader.obj
+         Debug\GLSLShader.obj
          Debug\ObjectType.obj
          Debug\View.obj
-         ICT397_Game_Engine.vcxproj -> D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe
-     1>Done Building Project "D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\ICT397_Game_Engine\ICT397_Game_Engine.vcxproj" (Build target(s)).
+     1>Model.obj : error LNK2019: unresolved external symbol "public: __thiscall ObjLoader::~ObjLoader(void)" (??1ObjLoader@@QAE@XZ) referenced in function "public: __thiscall ObjectLoader::~ObjectLoader(void)" (??1ObjectLoader@@QAE@XZ)
+     1>ObjLoader.obj : error LNK2001: unresolved external symbol "public: __thiscall ObjLoader::~ObjLoader(void)" (??1ObjLoader@@QAE@XZ)
+     1>ObjLoader.obj : error LNK2019: unresolved external symbol "public: __thiscall ObjLoader::ObjLoader(void)" (??0ObjLoader@@QAE@XZ) referenced in function "public: __thiscall ObjectLoader::ObjectLoader(void)" (??0ObjectLoader@@QAE@XZ)
+     1>ObjLoader.obj : error LNK2019: unresolved external symbol "public: bool __thiscall ObjLoader::Load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::vector<class Mesh *,class std::allocator<class Mesh *> > &,class std::vector<struct Vertex,class std::allocator<struct Vertex> > &,class std::vector<unsigned short,class std::allocator<unsigned short> > &,class std::vector<class Material *,class std::allocator<class Material *> > &)" (?Load@ObjLoader@@QAE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$vector@PAVMesh@@V?$allocator@PAVMesh@@@std@@@3@AAV?$vector@UVertex@@V?$allocator@UVertex@@@std@@@3@AAV?$vector@GV?$allocator@G@std@@@3@AAV?$vector@PAVMaterial@@V?$allocator@PAVMaterial@@@std@@@3@@Z) referenced in function "public: void __thiscall ObjectLoader::OnInit(void)" (?OnInit@ObjectLoader@@QAEXXZ)
+     1>D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe : fatal error LNK1120: 3 unresolved externals
+     1>Done Building Project "D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\ICT397_Game_Engine\ICT397_Game_Engine.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.21
+Time Elapsed 00:00:01.23

@@ -14,14 +14,15 @@ Model::Model()
 
 Model::~Model()
 {
-	if (m_view)
+	//////////////////////////CAUSES ASSERTION CRASH IF USED
+	/*if (m_view)
 		delete m_view;
 
 	if (m_npc)
 		delete m_npc;
 
 	if (m_sObject)
-		delete m_sObject;
+		delete m_sObject;*/
 }
 
 void Model::SetView(View *t_view)
@@ -99,7 +100,11 @@ void Model::ObjectTypeTest()
 		cout << "Scene Object Staticity >> " << m_sObject[2].Staticity() << " <<" << endl;
 
 		m_tested = true;
+
+		//obj.Load("tris.md2", "skin.pcx");
 	}
+
+	//obj.Draw();
 }
 
 void Model::SendToView()

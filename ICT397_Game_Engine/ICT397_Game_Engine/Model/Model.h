@@ -5,6 +5,7 @@
 
 #include "ObjectType.h"
 #include "..\View\View.h"
+#include "ObjectLoader\ObjViewer\ObjLoader.h"
 
 using namespace std;
 
@@ -83,6 +84,7 @@ private:
 	Player				 m_player;
 	NonPlayerCharacter	*m_npc;
 	SceneObject			*m_sObject;
+	ObjectLoader		obj;
 
 	bool m_tested;
 

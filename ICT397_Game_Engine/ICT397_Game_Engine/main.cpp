@@ -1,5 +1,5 @@
 #include <math.h>
-#include <GL/glut.h>
+//#include <GL/glut.h>
 #include <time.h>
 //#include <InputManager.h>
 
@@ -18,11 +18,11 @@ Controller g_controller;
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
-#include <GL/glut.h>
+//#include <GL/glut.h>
 #endif
 
 // angle of rotation for the camera direction
-float angle = 0.0f;
+float g_angle = 0.0f;
 
 // actual vector representing the camera's direction
 float lx=0.0f,lz=-1.0f;
@@ -98,11 +98,11 @@ bool viewSet = false;
 
 void renderScene(void) {
 
-	if (!viewSet)
-	{
+	
+	
 		g_controller.ModelTest();
-		viewSet = true;
-	}
+		
+	
 	
 
 	if (deltaMove)
@@ -196,8 +196,8 @@ void mouseMove(int x, int y) {
 		deltaAngle = (x - xOrigin) * 0.001f;
 
 		// update camera's direction
-		lx = sin(angle + deltaAngle);
-		lz = -cos(angle + deltaAngle);
+		lx = sin(g_angle + deltaAngle);
+		lz = -cos(g_angle + deltaAngle);
 	}
 }
 
@@ -208,7 +208,7 @@ void mouseButton(int button, int state, int x, int y) {
 
 		// when the button is released
 		if (state == GLUT_UP) {
-			angle += deltaAngle;
+			g_angle += deltaAngle;
 			xOrigin = -1;
 		}
 		else  {// state = GLUT_DOWN

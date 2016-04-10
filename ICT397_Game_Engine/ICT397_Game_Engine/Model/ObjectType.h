@@ -1,6 +1,7 @@
 #ifndef OBJECTTYPE_H
 #define OBJECTTYPE_H
 
+#include <string>
 #include "GameObject.h"
 
 class Player: public GameObject
