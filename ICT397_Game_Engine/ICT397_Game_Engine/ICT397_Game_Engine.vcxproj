@@ -11,24 +11,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractCamera.cpp" />
     <ClCompile Include="Controller\Controller.cpp" />
-    <ClCompile Include="FreeCamera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model\GameObject.cpp" />
     <ClCompile Include="Model\Model.cpp" />
     <ClCompile Include="Model\ObjectType.cpp" />
-    <ClCompile Include="TargetCamera.cpp" />
     <ClCompile Include="View\View.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractCamera.h" />
     <ClInclude Include="Controller\Controller.h" />
-    <ClInclude Include="FreeCamera.h" />
     <ClInclude Include="Model\GameObject.h" />
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="Model\ObjectType.h" />
-    <ClInclude Include="TargetCamera.h" />
     <ClInclude Include="View\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -81,7 +75,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;glew32s.lib;SDL2.lib;SDL2main.lib;bass.lib;SDL2_image.lib;lua5.1.lib;luabindd.lib;SDL2_mixer.lib;ozcollide.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletFileLoader_Debug.lib;BulletInverseDynamics_Debug.lib;BulletInverseDynamicsUtils_Debug.lib;BulletSoftBody_Debug.lib;BulletWorldImporter_Debug.lib;BulletXmlWorldImporter_Debug.lib;ConvexDecomposition_Debug.lib;GIMPACTUtils_Debug.lib;gtest_Debug.lib;gwen_Debug.lib;HACD_Debug.lib;LinearMath_Debug.lib;OpenGLWindow_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;SDL2.lib;SDL2main.lib;bass.lib;SDL2_image.lib;lua5.1.lib;luabindd.lib;SDL2_mixer.lib;ozcollide.lib;Bullet2FileLoader_Debug.lib;Bullet3Collision_Debug.lib;Bullet3Common_Debug.lib;Bullet3Dynamics_Debug.lib;Bullet3Geometry_Debug.lib;Bullet3OpenCL_clew_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;BulletFileLoader_Debug.lib;BulletInverseDynamics_Debug.lib;BulletInverseDynamicsUtils_Debug.lib;BulletSoftBody_Debug.lib;BulletWorldImporter_Debug.lib;BulletXmlWorldImporter_Debug.lib;ConvexDecomposition_Debug.lib;GIMPACTUtils_Debug.lib;gtest_Debug.lib;gwen_Debug.lib;HACD_Debug.lib;LinearMath_Debug.lib;OpenGLWindow_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

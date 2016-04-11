@@ -3,27 +3,16 @@
 #include <math.h>
 #include <GL/glut.h> //
 #include <stdlib.h> //Standard library - c library
-#include <glm/glm.hpp> //GLM 0.9.5 library - Open GL Mathematics
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include <time.h>
 
 //Class Headers
 #include "Controller\Controller.h"
-#include "TargetCamera.h"
-
-#include <time.h>
-//#include <InputManager.h>
 
 #pragma comment(lib, "lua5.1.lib")
 #pragma comment(lib, "luabindd.lib")
 
-using namespace std;
-using namespace glm;
-
-
-
+//Objects
 Controller g_controller;
-TCamera g_cam;
 
 
 #ifdef __APPLE__
@@ -32,21 +21,6 @@ TCamera g_cam;
 #include <GL/glut.h>
 #endif
 
-float dt = 0; //delta time
-const float MOVE_SPEED = 0.125f; //movespeed of camera
-
-const int W = 87;
-const int w = 119;
-const int S = 83;
-const int s = 115;
-const int A = 65;
-const int a = 97;
-const int D = 68;
-const int d = 100;
-const int G = 71;
-const int g = 103;
-const int H = 72;
-const int h = 104;
 
 // angle of rotation for the camera direction
 float angle = 0.0f;
@@ -56,11 +30,12 @@ float lx=0.0f,lz=-1.0f;
 
 // XZ position of the camera
 float x=0.0f, z=5.0f;
-
+float u = 9.0;
 // the key states. These variables will be zero
 //when no key is being presses
 float deltaAngle = 0.0f;
 float deltaMove = 0;
+float deltaUp = 0;
 int xOrigin = -1;
 
 void changeSize(int w, int h) {
@@ -121,6 +96,22 @@ void computePos(float deltaMove) {
 	z += deltaMove * lz * 0.1f;
 }
 
+void computeDir(float deltaAngle) {
+
+	angle += deltaAngle;
+	lx = sin(angle);
+	lz = -cos(angle);
+}
+
+void checkUp(float deltaUp) {
+
+	u = u+deltaUp;
+	if(u <= 7.5)
+        u=7.5;
+    if (u >=10.5)
+        u=10.5;
+}
+
 bool viewSet = false;
 
 void renderScene(void) {
@@ -135,14 +126,16 @@ void renderScene(void) {
 	if (deltaMove)
 		computePos(deltaMove);
 
+		checkUp(deltaUp);
+
 	// Clear Color and Depth Buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Reset transformations
 	glLoadIdentity();
-	// Set the camera
-	gluLookAt(	x, 1.0f, z,
-			x+lx, 1.0f,  z+lz,
+
+	gluLookAt(	x, 9.0f, z,
+			x + lx, u,  z + lz,
 			0.0f, 1.0f,  0.0f);
 
 // Draw ground
@@ -179,91 +172,63 @@ void renderScene(void) {
 		glVertex3f(-100.0f, 0.0f,  -100.0f);
 	glEnd();
 
-/*// Draw 36 SnowMen
-
-	for(int i = -3; i < 3; i++){
-		for(int j=-3; j < 3; j++){
-                     glPushMatrix();
-                     glTranslatef(i*10.0,0,j * 10.0);
-                     drawSnowMan();
-                     glPopMatrix();
-        }
-	}*/
         glutSwapBuffers();
 } 
 
-void processNormalKeys(unsigned char key, int xx, int yy) { 	
+void processNormalKeys(unsigned char key, int xx, int yy)
+{
+	//float tz, tx = 0;
 
-        if (key == 27)
-              exit(0);
-} 
+	switch (key) {
+	  case 'w':deltaMove = 3.6f;
+         break;
+      case 'a':x-=4.01f;
+         break;
+      case 's':deltaMove = -3.6f;
+         break;
+      case 'd':x+=4.01f;
+         break;
+      case 'k':deltaUp = -0.01f;
+         break;
+      case 'l':deltaUp = 0.01f;
+         break;
+      case 27:exit(0);
+         break;
+      default:
+         break;
+   }
+}
 
-void pressKey(int key, int xx, int yy) {
-	bool bKeyPressed = false;
-	float dx = 0, dz = 0;
+void releaseKey(unsigned char key, int xx, int yy) {
 
-    switch (key) {
-            case W : 
-			case w :
-				dz += (MOVE_SPEED*dt);
-				bKeyPressed = true;
-				break;
-			case S : 
-			case s :
-				dz -= (MOVE_SPEED*dt);
-				bKeyPressed = true;
-				break;
-            case A : 
-			case a :
-				dx -= (MOVE_SPEED*dt);
-				bKeyPressed = true;
-				break;
-			case D : 
-			case d :
-				dx += (MOVE_SPEED*dt);
-				bKeyPressed = true;
-				break;
-           // case G : 
-			///case g :
-			//	g_cam.Lift(dt);
-			//	bKeyPressed = true;
-			//	break;
-			//case H : 
-		//	case h :
-		//		g_cam.Lift(-dt);
-		//		bKeyPressed = true;
-		//		break;
-    }
-	if(bKeyPressed)
-		g_cam.MoveCamera(dx, dz);
-
-	glutPostRedisplay();
-
-} 
-
-void releaseKey(int key, int x, int y) { 	
-
-        switch (key) {
-             case GLUT_KEY_UP :
-				 ;
-				 break;
-             case GLUT_KEY_DOWN : ;
-				 break;;
-        }
-} 
+	switch (key) {
+      case 119:deltaMove = 0.0f;
+         break;
+      case 115:deltaMove = 0.0f;
+         break;;
+      case 107:deltaUp = 0.0f;
+         break;
+      case 108:deltaUp = 0.0f;
+         break;
+   }
+}
 
 void mouseMove(int x, int y) { 	
 
          // this will only be true when the left button is down
-         if (xOrigin >= 0) {
+    if (xOrigin >= 0) {
 
 		// update deltaAngle
 		deltaAngle = (x - xOrigin) * 0.001f;
-
+		
 		// update camera's direction
 		lx = sin(angle + deltaAngle);
 		lz = -cos(angle + deltaAngle);
+		
 	}
+
+
+		
 }
 
 void mouseButton(int button, int state, int x, int y) {
@@ -275,6 +240,7 @@ void mouseButton(int button, int state, int x, int y) {
 		if (state == GLUT_UP) {
 			angle += deltaAngle;
 			xOrigin = -1;
+
 		}
 		else  {// state = GLUT_DOWN
 			xOrigin = x;
@@ -303,7 +269,7 @@ int main(int argc, char* argv[]) {
 	//glutSpecialFunc(processSpecialKeys);
 	//glutIgnoreKeyRepeat(1);
 
-	//glutSpecialUpFunc(releaseKey);
+	glutKeyboardUpFunc(releaseKey);
 
 	// here are the two new functions
 	glutMouseFunc(mouseButton);
@@ -317,35 +283,3 @@ int main(int argc, char* argv[]) {
 
 	return 1;
 }
-/*
-int main(int argc, char **argv) {
-	
-	// init GLUT and create window
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(100,100);
-	glutInitWindowSize(320,320);
-	glutCreateWindow("Lighthouse3D - GLUT Tutorial");
-
-	// register callbacks
-	glutDisplayFunc(renderScene);
-	glutReshapeFunc(changeSize);
-	glutIdleFunc(renderScene);
-
-	glutIgnoreKeyRepeat(1);
-	glutKeyboardFunc(processNormalKeys);
-	glutSpecialFunc(pressKey);
-	glutSpecialUpFunc(releaseKey);
-
-	// here are the two new functions
-	glutMouseFunc(mouseButton);
-	glutMotionFunc(mouseMove);
-
-	// OpenGL init
-	glEnable(GL_DEPTH_TEST);
-
-	// enter GLUT event processing cycle
-	glutMainLoop();
-
-	return 1;
-}*/

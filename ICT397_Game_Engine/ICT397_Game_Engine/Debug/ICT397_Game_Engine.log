@@ -1,20 +1,3 @@
-﻿  View.cpp
-  TargetCamera.cpp
-  ObjectType.cpp
-  Model.cpp
-  GameObject.cpp
-  main.cpp
-k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(71): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(262): error C2872: 'angle' : ambiguous symbol
-          could be 'k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(50) : float angle'
-          or       'k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\libraries\glm\glm\gtc\quaternion.hpp(323) : T glm::angle(const glm::tquat<T,P> &)'
-k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(263): error C2872: 'angle' : ambiguous symbol
-          could be 'k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(50) : float angle'
-          or       'k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\libraries\glm\glm\gtc\quaternion.hpp(323) : T glm::angle(const glm::tquat<T,P> &)'
-k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(274): error C2872: 'angle' : ambiguous symbol
-          could be 'k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(50) : float angle'
-          or       'k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\libraries\glm\glm\gtc\quaternion.hpp(323) : T glm::angle(const glm::tquat<T,P> &)'
-  FreeCamera.cpp
-  Controller.cpp
-  AbstractCamera.cpp
-  Generating Code...
+﻿  main.cpp
+k:\ict397 - advanced games design and programming\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(48): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+  ICT397_Game_Engine.vcxproj -> K:\ICT397 - Advanced Games Design And Programming\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe
