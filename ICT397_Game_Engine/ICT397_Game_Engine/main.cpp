@@ -67,23 +67,28 @@ void changeSize(int w, int h) {
 	// Set the viewport to be the entire window
 	glViewport(0, 0, w, h);
 
-	// Set the correct perspective.
-	gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+	if(gameState ==0){
+		// Set the correct perspective.
+		gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+	}else{// ie gamestate ==1
+		gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);
+	}
 
 	// Get Back to the Modelview
 	glMatrixMode(GL_MODELVIEW);
 }
 
 void computePos(float deltaMove) {
-
-	x += deltaMove * lx * 0.1f;
-	z += deltaMove * lz * 0.1f;
+	if(gameState==0){
+		x += deltaMove * lx * 0.1f;
+		z += deltaMove * lz * 0.1f;
+	}
 }
 
 bool viewSet = false;
 
 void renderScene(void) {
-	if(!A){
+	if(!A){//debug stuff
 		cout << "reached renderScene" <<endl;
 		A=true;
 	}
@@ -110,9 +115,9 @@ void renderScene(void) {
 		// Reset transformations
 		glLoadIdentity();
 		// Set the camera
-		gluLookAt(	x, 1.0f, z,
-				x+lx, 1.0f,  z+lz,
-				0.0f, 1.0f,  0.0f);
+		gluLookAt(	x,		1.0f,	z,
+					x+lx,	1.0f,	z+lz,
+					0.0f,	1.0f,	0.0f);
 
 	// Draw ground
 
@@ -154,7 +159,7 @@ void renderScene(void) {
 			cout << "gameState == 1" << endl;
 			lastGameState=1;
 		}
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//
 		g_controller.MenuCtrl(windowHeight, windowWidth);
 		glutSwapBuffers();
 	}
@@ -167,29 +172,42 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
 			cout << "Switching to menu state" <<endl;
 			gameState = 1;
 			glMatrixMode(GL_PROJECTION);
+
 			glLoadIdentity();
-			gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);// 0.0f, 0.0f, 1.0f
-			glDisable(GLUT_DEPTH);
+			gluOrtho2D(0.0f, 1, 0.0f, 1);// 0.0f, 0.0f, 1.0f
+			//glDisable(GLUT_DEPTH);
 
 			glMatrixMode(GL_MODELVIEW);
+			glutPostRedisplay();
 		}else{
 			gameState = 0;
+			glMatrixMode(GL_PROJECTION);
+
+			glLoadIdentity();
+
+			double ratio =  windowWidth * 1.0 / windowHeight;
+
+			gluPerspective(45.0f, ratio, 0.1f, 100.0f);
 			cout << "Switching to game state" <<endl;
 			glEnable(GLUT_DEPTH);
+
+			glMatrixMode(GL_MODELVIEW);
+			glutPostRedisplay();
 		}
 	}
 } 
 
 void pressKey(int key, int xx, int yy) {
-
-	switch (key) {
-		case GLUT_KEY_UP : deltaMove = 0.5f; break;
-		case GLUT_KEY_DOWN : deltaMove = -0.5f; break;
+	if(gameState==0){
+		switch (key) {
+			case GLUT_KEY_UP : deltaMove = 0.5f; break;
+			case GLUT_KEY_DOWN : deltaMove = -0.5f; break;
+		}
 	}
 } 
 
 void releaseKey(int key, int x, int y) { 	
-
+	
         switch (key) {
              case GLUT_KEY_UP :
              case GLUT_KEY_DOWN : deltaMove = 0;break;
@@ -197,16 +215,17 @@ void releaseKey(int key, int x, int y) {
 } 
 
 void mouseMove(int x, int y) { 	
+	if(gameState==0){
+		// this will only be true when the left button is down
+		if (xOrigin >= 0) {
 
-         // this will only be true when the left button is down
-         if (xOrigin >= 0) {
+			// update deltaAngle
+			deltaAngle = (x - xOrigin) * 0.001f;
 
-		// update deltaAngle
-		deltaAngle = (x - xOrigin) * 0.001f;
-
-		// update camera's direction
-		lx = sin(angle + deltaAngle);
-		lz = -cos(angle + deltaAngle);
+			// update camera's direction
+			lx = sin(angle + deltaAngle);
+			lz = -cos(angle + deltaAngle);
+		}
 	}
 }
 

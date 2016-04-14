@@ -39,13 +39,13 @@ public:
 			hasHit=true;
 		}
 		//Set GL state
-		glPushMatrix();
+		//glPushMatrix();
 		gluLookAt(	0.0, 1.0f, 0.0,
 					0.0, 1.0f,  -1.0,
 					0.0f, 1.0f,  0.0f);
 
 		glColor3f(0.5f,0.5f,0.5f);
-		glBegin(GL_QUADS);
+		glBegin(GL_POLYGON);
 			glVertex3i(0, 0, 0.0);
 			glVertex3i(0, windowHeight, 0.0);
 			glVertex3i(windowWidth, windowHeight, 0.0);
@@ -53,7 +53,7 @@ public:
 		glEnd();
 
 		
-		glPopMatrix();
+		//glPopMatrix();
 	}
 
 private:
