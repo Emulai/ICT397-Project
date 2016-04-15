@@ -10,6 +10,7 @@ Model::Model()
 
 	m_npcCount = 12;
 	m_sOCount = 7;
+
 }
 
 Model::~Model()
@@ -29,17 +30,42 @@ void Model::SetView(View *t_view)
 	m_view = t_view;
 }
 
-GameObject* Model::CreateGameObject(const string t_description)
+void Model::SetGOSize(int t_size)
 {
-	GameObject *tempGameObject = m_gAF.NewGameObject(t_description);
-	return tempGameObject;
+	m_goArray = new GameObject *[t_size];
+}
+
+void Model::CreateGameObject(const string t_description, int t_index, float t_transformX, float t_transformY, float t_transformZ, float t_rotationX, float t_rotationY, float t_rotationZ, string t_modelPath, string t_aiPath, int t_health, bool t_hostility, bool t_staticity)
+{
+	m_goArray[t_index] = m_gAF.NewGameObject(t_description);
+
+	m_goArray[t_index]->TransformX(t_transformX);
+	m_goArray[t_index]->TransformY(t_transformY);
+	m_goArray[t_index]->TransformZ(t_transformZ);
+
+	m_goArray[t_index]->RotationX(t_rotationX);
+	m_goArray[t_index]->RotationY(t_rotationY);
+	m_goArray[t_index]->RotationZ(t_rotationZ);
+
+	m_goArray[t_index]->ModelPath(t_modelPath);
+	m_goArray[t_index]->AIPath(t_aiPath);
+
+	m_goArray[t_index]->Health(t_health);
+
+	m_goArray[t_index]->IsHostile(t_hostility);
+	m_goArray[t_index]->Staticity(t_staticity);
+
 }
 
 void Model::ObjectTypeTest()
 {
 	if (!m_tested){
 
-		GameObject *newGameObject = CreateGameObject("player");
+		/*GameObject *newGameObject = CreateGameObject("player");
+
+		newGameObject->IsHostile();
+
+		newGameObject = CreateGameObject("scene");
 
 		newGameObject->IsHostile();
 
@@ -50,7 +76,7 @@ void Model::ObjectTypeTest()
 		newerGameObject->Health(50);
 
 		cout << "NPC 1: " << newGameObject->Health() << endl;
-		cout << "NPC 2: " << newerGameObject->Health() << endl;
+		cout << "NPC 2: " << newerGameObject->Health() << endl;*/
 
 
 		//GameObject
@@ -120,6 +146,8 @@ void Model::ObjectTypeTest()
 
 		m_tested = true;
 	}
+
+	m_view->Render();
 }
 
 void Model::SendToView()

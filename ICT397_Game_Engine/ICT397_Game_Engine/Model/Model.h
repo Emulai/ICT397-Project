@@ -41,6 +41,10 @@ public:
         */
 	void SetView(View *t_view);
 
+	void SetGOSize(int t_size);
+
+	void CreateGameObject(const string t_description, int t_index, float t_transformX, float t_transformY, float t_transformZ, float t_rotationX, float t_rotationY, float t_rotationZ, string t_modelPath, string t_aiPath, int t_health, bool t_hostility, bool t_staticity);
+
 	/**
         * @brief Runs the ObjectType test
         *
@@ -61,7 +65,7 @@ public:
         */
 	void SendToView();
 
-	GameObject* CreateGameObject(const string t_description);
+	
 
 	//////////////////////
 	//Checkpoint system here
@@ -83,6 +87,8 @@ private:
 	View *m_view;
 
 	GameAssetFactory m_gAF;
+
+	GameObject **m_goArray;
 
 	bool m_tested;
 

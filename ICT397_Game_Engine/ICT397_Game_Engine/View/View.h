@@ -1,6 +1,8 @@
 #ifndef VIEW_H
 #define VIEW_H
 
+//#include "..\Model\Objloader.h"
+
 class View
 {
 public:
@@ -23,7 +25,7 @@ public:
         * @param int t_modelReference - Model Reference number
         * @return void
         */
-	void Render(int t_modelReference);
+	void Render();
 
 	//////////////////////////
 	//Function to DISPLAY menus here
@@ -32,7 +34,11 @@ public:
 
 private:
 
+	//objloader obj;
 
+	//bool loaded;
+
+	//int cube;
 
 };
 
