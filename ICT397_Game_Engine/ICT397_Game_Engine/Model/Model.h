@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include "ObjectType.h"
-#include "..\View\View.h"
-#include "ObjectLoader\ObjViewer\ObjLoader.h"
+#include "GameAssetFactory.h"
+#include "../View/View.h"
+//#include "ObjectLoader\ObjViewer\ObjLoader.h"
 
 using namespace std;
 
@@ -42,6 +42,8 @@ public:
         */
 	void SetView(View *t_view);
 
+	GameObject* CreateGameObject(string t_description);
+
 	/**
         * @brief Runs the ObjectType test
         *
@@ -50,7 +52,7 @@ public:
         *
         * @return void
         */
-	void ObjectTypeTest();
+	void ExampleFactoryCall();
 
 	/**
         * @brief Passes model references to View
@@ -81,10 +83,12 @@ private:
 
 	View *m_view;
 
-	Player				 m_player;
-	NonPlayerCharacter	*m_npc;
-	SceneObject			*m_sObject;
-	ObjectLoader		obj;
+	GameAssetFactory m_gAF;
+
+	//Player				 m_player;
+	//NonPlayerCharacter	*m_npc;
+	//SceneObject			*m_sObject;
+	//ObjectLoader		obj;
 
 	bool m_tested;
 

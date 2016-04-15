@@ -1,5 +1,5 @@
 #include <math.h>
-//#include <GL/glut.h>
+#include <GL/glut.h>
 #include <time.h>
 //#include <InputManager.h>
 

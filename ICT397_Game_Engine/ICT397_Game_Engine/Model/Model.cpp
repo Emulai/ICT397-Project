@@ -30,87 +30,51 @@ void Model::SetView(View *t_view)
 	m_view = t_view;
 }
 
-void Model::ObjectTypeTest()
+GameObject* Model::CreateGameObject(string t_description)
 {
-	if (!m_tested){
+	GameObject *tempGameObject = m_gAF.NewGameObject(t_description);
+	return tempGameObject;
+}
 
-		//GameObject
+void Model::ExampleFactoryCall()
+{
+	if (!m_tested)
+	{
 
-		m_player.Transform(m_test);
-		m_player.Rotation(m_test);
+		GameObject *newGameObject = CreateGameObject("player");
 
-		cout << "Player Transform >> " << m_player.TransformX() << " " << m_player.TransformY() << " " << m_player.TransformZ() << " <<" << endl;
-		cout << "Player Rotation >> " << m_player.RotationX() << " " << m_player.RotationY() << " " << m_player.RotationZ() << " <<" << endl;
+		newGameObject->IsHostile(true);
 
-		m_player.TransformX(50);
-		m_player.TransformY(100);
-		m_player.TransformZ(70);
+		newGameObject = CreateGameObject("npc");
 
-		m_player.RotationX(90);
-		m_player.RotationY(57);
-		m_player.RotationZ(12);
+		newGameObject->IsHostile(true);
 
-		Vector3 f_tTest = m_player.Transform();
-		Vector3 f_rTest = m_player.Rotation();
+		newGameObject = CreateGameObject("scene");
 
-		cout << "Player Transform >> " << f_tTest.x << " " << f_tTest.y << " " << f_tTest.z << " <<" << endl;
-		cout << "Player Rotation >> " << f_rTest.x << " " << f_rTest.y << " " << f_rTest.z << " <<" << endl;
+		newGameObject->IsHostile(true);
 
-		float f_tX, f_tY, f_tZ, f_rX, f_rY, f_rZ;
+		newGameObject = CreateGameObject("npc");
 
-		f_tX = m_player.TransformX();
-		f_tY = m_player.TransformY();
-		f_tZ = m_player.TransformZ();
+		newGameObject->Health(100);
 
-		f_rX = m_player.RotationX();
-		f_rY = m_player.RotationY();
-		f_rZ = m_player.RotationZ();
+		GameObject *newestGameObject = CreateGameObject("npc");
 
-		cout << "Player Transform >> " << f_tX << " " << f_tY << " " << f_tZ << " <<" << endl;
-		cout << "Player Rotation >> " << f_rX << " " << f_rY << " " << f_rZ << " <<" << endl;
+		newestGameObject->Health(50);
 
-		m_player.ModelReference(7);
+		cout << "NPC 1: " << newGameObject->Health() << endl;
 
-		cout << "Model Path Here >> " << m_player.ModelReference() << " <<" << endl;
-
-		//Player
-
-		m_player.Health(289);
-
-		cout << "Player Health >> " << m_player.Health() << " <<" << endl;
-
-		//NPC
-
-		m_npc = new NonPlayerCharacter[m_npcCount];
-
-		m_npc[10].Health(6);
-		m_npc[5].IsHostile(true);
-		m_npc[1].AIPath("Banana");
-
-		cout << "NPC Health >> " << m_npc[10].Health() << " <<" << endl; 
-		cout << "NPC Hostility >> " << m_npc[5].IsHostile() << " <<" << endl; 
-		cout << "NPC AI Path >> " << m_npc[1].AIPath() << " <<" << endl;
-
-		//Scene Object
-		
-		m_sObject = new SceneObject[m_sOCount];
-
-		m_sObject[2].Staticity(false);
-
-		cout << "Scene Object Staticity >> " << m_sObject[2].Staticity() << " <<" << endl;
+		cout << "NPC 2: " << newestGameObject->Health() << endl;
 
 		m_tested = true;
 
-		//obj.Load("tris.md2", "skin.pcx");
 	}
 
-	//obj.Draw();
 }
 
 void Model::SendToView()
 {
 
-	m_view->Render(m_player.ModelReference());
+	/*m_view->Render(m_player.ModelReference());
 
 	for (int count = 0; count < m_npcCount; count++)
 	{
@@ -124,7 +88,7 @@ void Model::SendToView()
 
 		m_view->Render(m_sObject[count].ModelReference());
 
-	}
+	}*/
 
 }
 

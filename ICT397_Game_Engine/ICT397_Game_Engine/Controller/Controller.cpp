@@ -7,5 +7,5 @@ Controller::Controller()
 
 void Controller::ModelTest()
 {
-	m_model.ObjectTypeTest();
+	m_model.ExampleFactoryCall();
 }
