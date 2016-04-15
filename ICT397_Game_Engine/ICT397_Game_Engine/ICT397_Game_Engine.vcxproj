@@ -23,10 +23,10 @@
   <ItemGroup>
     <ClInclude Include="Controller\Controller.h" />
     <ClInclude Include="Model\GameAssetFactory.h" />
-    <ClInclude Include="Model\GameObject.h" />
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="Model\NonPlayerCharacter.h" />
     <ClInclude Include="Model\ObjectType.h" />
+    <ClInclude Include="Model\Objloader.h" />
     <ClInclude Include="Model\Player.h" />
     <ClInclude Include="Model\SceneObject.h" />
     <ClInclude Include="View\View.h" />
