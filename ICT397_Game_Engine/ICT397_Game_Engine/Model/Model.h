@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "ObjectType.h"
+#include "GameAssetFactory.h"
 #include "..\View\View.h"
 
 using namespace std;
@@ -61,6 +61,8 @@ public:
         */
 	void SendToView();
 
+	GameObject* CreateGameObject(const string t_description);
+
 	//////////////////////
 	//Checkpoint system here
 	//Will need to save Player stats, NPC stats and likely SceneObject stats too
@@ -80,9 +82,7 @@ private:
 
 	View *m_view;
 
-	Player				 m_player;
-	NonPlayerCharacter	*m_npc;
-	SceneObject			*m_sObject;
+	GameAssetFactory m_gAF;
 
 	bool m_tested;
 

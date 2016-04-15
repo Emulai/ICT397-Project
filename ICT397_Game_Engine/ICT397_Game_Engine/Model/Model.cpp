@@ -14,14 +14,14 @@ Model::Model()
 
 Model::~Model()
 {
-	if (m_view)
+	/*if (m_view)
 		delete m_view;
 
 	if (m_npc)
 		delete m_npc;
 
 	if (m_sObject)
-		delete m_sObject;
+		delete m_sObject;*/
 }
 
 void Model::SetView(View *t_view)
@@ -29,13 +29,33 @@ void Model::SetView(View *t_view)
 	m_view = t_view;
 }
 
+GameObject* Model::CreateGameObject(const string t_description)
+{
+	GameObject *tempGameObject = m_gAF.NewGameObject(t_description);
+	return tempGameObject;
+}
+
 void Model::ObjectTypeTest()
 {
 	if (!m_tested){
 
+		GameObject *newGameObject = CreateGameObject("player");
+
+		newGameObject->IsHostile();
+
+		GameObject *newerGameObject = CreateGameObject("npc");
+		newGameObject = CreateGameObject("npc");
+
+		newGameObject->Health(100);
+		newerGameObject->Health(50);
+
+		cout << "NPC 1: " << newGameObject->Health() << endl;
+		cout << "NPC 2: " << newerGameObject->Health() << endl;
+
+
 		//GameObject
 
-		m_player.Transform(m_test);
+		/*m_player.Transform(m_test);
 		m_player.Rotation(m_test);
 
 		cout << "Player Transform >> " << m_player.TransformX() << " " << m_player.TransformY() << " " << m_player.TransformZ() << " <<" << endl;
@@ -96,7 +116,7 @@ void Model::ObjectTypeTest()
 
 		m_sObject[2].Staticity(false);
 
-		cout << "Scene Object Staticity >> " << m_sObject[2].Staticity() << " <<" << endl;
+		cout << "Scene Object Staticity >> " << m_sObject[2].Staticity() << " <<" << endl;*/
 
 		m_tested = true;
 	}
@@ -105,7 +125,7 @@ void Model::ObjectTypeTest()
 void Model::SendToView()
 {
 
-	m_view->Render(m_player.ModelReference());
+	/*m_view->Render(m_player.ModelReference());
 
 	for (int count = 0; count < m_npcCount; count++)
 	{
@@ -119,7 +139,7 @@ void Model::SendToView()
 
 		m_view->Render(m_sObject[count].ModelReference());
 
-	}
+	}*/
 
 }
 

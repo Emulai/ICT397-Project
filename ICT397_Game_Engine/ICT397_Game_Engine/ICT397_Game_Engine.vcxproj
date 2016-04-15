@@ -13,16 +13,22 @@
   <ItemGroup>
     <ClCompile Include="Controller\Controller.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Model\GameObject.cpp" />
+    <ClCompile Include="Model\GameAssetFactory.cpp" />
     <ClCompile Include="Model\Model.cpp" />
-    <ClCompile Include="Model\ObjectType.cpp" />
+    <ClCompile Include="Model\NonPlayerCharacter.cpp" />
+    <ClCompile Include="Model\Player.cpp" />
+    <ClCompile Include="Model\SceneObject.cpp" />
     <ClCompile Include="View\View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller\Controller.h" />
+    <ClInclude Include="Model\GameAssetFactory.h" />
     <ClInclude Include="Model\GameObject.h" />
     <ClInclude Include="Model\Model.h" />
+    <ClInclude Include="Model\NonPlayerCharacter.h" />
     <ClInclude Include="Model\ObjectType.h" />
+    <ClInclude Include="Model\Player.h" />
+    <ClInclude Include="Model\SceneObject.h" />
     <ClInclude Include="View\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
