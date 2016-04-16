@@ -5,6 +5,12 @@
 #include <stdlib.h> //Standard library - c library
 #include <time.h>
 
+#include <iostream>
+#include <cstdio>
+using namespace std;
+#include <lua.hpp>
+
+
 //Class Headers
 #include "Controller\Controller.h"
 
@@ -248,10 +254,89 @@ void mouseButton(int button, int state, int x, int y) {
 	}
 }
 
+int multiply(int a, int b)
+{
+  return a*b;
+}
 
+int add(int a, int b)
+{
+  return a+b;
+}
 
+int cpp_Multiply(lua_State* luaVM)
+{ 
+	//determine number of params on the stack
+    int numParams=lua_gettop(luaVM);
+    if(numParams!=2) {
+	   cout<<"not enough params"<<endl;
+	   return 0;
+    }
+    if(!lua_isnumber(luaVM,1)||!lua_isnumber(luaVM,2)){
+	  cout<<"bad params"<<endl;
+	  return 0;
+	}
+
+    //pull params off stack
+   int num1=(int)lua_tonumber(luaVM,1);
+   int num2=(int)lua_tonumber(luaVM,2);
+   //call the real function
+   int result=multiply(num1,num2);
+   //push result onto the stack
+   lua_pushnumber(luaVM,result);
+   return 1;  //return the number of values returned
+}
+
+int cpp_Add(lua_State* luaVM)
+{ 
+	//determine number of params on the stack
+    int numParams=lua_gettop(luaVM);
+    if(numParams!=2) {
+	   cout<<"not enough params"<<endl;
+	   return 0;
+    }
+    if(!lua_isnumber(luaVM,1)||!lua_isnumber(luaVM,2)){
+	  cout<<"bad params"<<endl;
+	  return 0;
+	}
+
+    //pull params off stack
+   int num1=(int)lua_tonumber(luaVM,1);
+   int num2=(int)lua_tonumber(luaVM,2);
+   //call the real function
+   int added=add(num1,num2);
+   //push result onto the stack
+   lua_pushnumber(luaVM,added);
+   return 1;  //return the number of values returned
+}
 
 int main(int argc, char* argv[]) {
+
+	//create lua state
+    lua_State* L = lua_open();
+    if (L==NULL){
+       cout<<"Error Initializing lua"<<endl;;
+       return -1;
+    }
+	lua_register(L,"cpp_Add",cpp_Add);
+	// reister the wrapper function
+    lua_register(L,"cpp_Multiply",cpp_Multiply);
+
+    // load standard lua library functions
+    luaL_openlibs(L);
+
+	// load and run Lua script
+    if (luaL_dofile(L, "script4.lua" )){
+		cout<<"error opening file\n";
+	
+	    getchar(); return 1;
+	}
+
+    lua_close(L);
+    //getchar();
+	//return 0;
+	
+
 
 	// init GLUT and create window
 	glutInit(&argc, argv);
