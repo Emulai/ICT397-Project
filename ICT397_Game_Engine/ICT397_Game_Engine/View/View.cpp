@@ -1,8 +1,6 @@
 #include "View.h"
 
-View::View()
-{
-	hasHit=false;//for debug purposes
+View::View(){
 }
 
 

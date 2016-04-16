@@ -1,12 +1,95 @@
-﻿Build started 12/04/2016 3:14:48 PM.
+﻿Build started 16/04/2016 2:31:43 PM.
      1>Project "D:\ICT397-Project\ICT397_Game_Engine\ICT397_Game_Engine\ICT397_Game_Engine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Controller\Controller.cpp Model\Model.cpp View\View.cpp main.cpp
+         Controller.cpp
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(52): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(52): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(53): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(53): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(54): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(54): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(55): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(55): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(60): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(60): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(61): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(61): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(62): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(62): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(63): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(63): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(68): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(68): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(69): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(69): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(70): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(70): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(71): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(71): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(76): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(76): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(77): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(77): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(79): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(79): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(80): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(80): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(85): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(85): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(86): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(86): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(87): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(87): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(88): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(88): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+         Generating Code...
+         Compiling...
          main.cpp
-     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(49): warning C4244: 'argument' : conversion from 'double' to 'GLint', possible loss of data
-     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(50): warning C4244: 'argument' : conversion from 'double' to 'GLint', possible loss of data
-     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(51): warning C4244: 'argument' : conversion from 'double' to 'GLint', possible loss of data
-     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(52): warning C4244: 'argument' : conversion from 'double' to 'GLint', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(52): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(52): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(53): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(53): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(54): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(54): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(55): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(55): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(60): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(60): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(61): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(61): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(62): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(62): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(63): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(63): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(68): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(68): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(69): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(69): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(70): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(70): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(71): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(71): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(76): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(76): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(77): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(77): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(79): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(79): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(80): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(80): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(85): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(85): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(86): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(86): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(87): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(87): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(88): warning C4305: 'argument' : truncation from 'double' to 'GLfloat'
+     1>d:\ict397-project\ict397_game_engine\ict397_game_engine\view\view.h(88): warning C4244: 'argument' : conversion from 'int' to 'GLfloat', possible loss of data
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         View.cpp
+         Model.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe" /INCREMENTAL /NOLOGO opengl32.lib glu32.lib glut32.lib SDL2.lib SDL2main.lib bass.lib SDL2_image.lib lua5.1.lib luabindd.lib SDL2_mixer.lib ozcollide.lib Bullet2FileLoader_Debug.lib Bullet3Collision_Debug.lib Bullet3Common_Debug.lib Bullet3Dynamics_Debug.lib Bullet3Geometry_Debug.lib Bullet3OpenCL_clew_Debug.lib BulletCollision_Debug.lib BulletDynamics_Debug.lib BulletFileLoader_Debug.lib BulletInverseDynamics_Debug.lib BulletInverseDynamicsUtils_Debug.lib BulletSoftBody_Debug.lib BulletWorldImporter_Debug.lib BulletXmlWorldImporter_Debug.lib ConvexDecomposition_Debug.lib GIMPACTUtils_Debug.lib gtest_Debug.lib gwen_Debug.lib HACD_Debug.lib LinearMath_Debug.lib OpenGLWindow_Debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.lib" /MACHINE:X86 Debug\Controller.obj
          Debug\main.obj
@@ -19,4 +102,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.17
+Time Elapsed 00:00:02.63

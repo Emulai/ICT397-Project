@@ -44,7 +44,6 @@ int windowWidth =1280;
 //0 is the game, 1 is the menu
 short gameState = 0;
 short lastGameState = 0;
-bool A = false;
 
 void changeSize(int w, int h) {
 
@@ -88,10 +87,6 @@ void computePos(float deltaMove) {
 bool viewSet = false;
 
 void renderScene(void) {
-	if(!A){//debug stuff
-		cout << "reached renderScene" <<endl;
-		A=true;
-	}
 
 	if(gameState == 0){//ie. game state
 		if(lastGameState !=0){//debug stuff
@@ -120,7 +115,6 @@ void renderScene(void) {
 					0.0f,	1.0f,	0.0f);
 
 	// Draw ground
-
 		glColor3f(0.0f, 0.9f, 0.9f);
 		glBegin(GL_POLYGON);
 			glVertex3f(-100.0f, 0.0f,  100.0f);
@@ -169,12 +163,13 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
 
 	if (key == 27){
 		if(gameState == 0){
+			
 			cout << "Switching to menu state" <<endl;
 			gameState = 1;
 			glMatrixMode(GL_PROJECTION);
 
 			glLoadIdentity();
-			gluOrtho2D(0.0f, 1, 0.0f, 1);// 0.0f, 0.0f, 1.0f
+			gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);// 0.0f, 0.0f, 1.0f
 			//glDisable(GLUT_DEPTH);
 
 			glMatrixMode(GL_MODELVIEW);
