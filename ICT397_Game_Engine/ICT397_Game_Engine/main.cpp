@@ -96,6 +96,7 @@ void computePos(float deltaMove) {
 		x += deltaMove * lx * 0.1f;
 		z += deltaMove * lz * 0.1f;
 	}
+
 }
 
 void computeDir(float deltaAngle) {
@@ -314,6 +315,7 @@ int main(int argc, char* argv[]) {
     //getchar();
 	//return 0;
 	
+
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);

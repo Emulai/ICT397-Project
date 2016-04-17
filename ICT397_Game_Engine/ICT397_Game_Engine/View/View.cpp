@@ -90,8 +90,8 @@ void View::EnterMenuState(){
 		<< "From top to bottom, functionality is \n\tResume\n\tOptions(unimplemented)" << std::endl
 		<< "\tCredits(unimplemented)\n\tListCheckpoints[includes save/load](unimplemented)" << std::endl
 		<< "\tExit" << std::endl;
-	glMatrixMode(GL_PROJECTION);
 
+	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluOrtho2D(0.0f, GetWindowWidth(), 0.0f, GetWindowHeight());// 0.0f, 0.0f, 1.0f
 	//glDisable(GLUT_DEPTH);
