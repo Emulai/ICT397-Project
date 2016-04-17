@@ -4,11 +4,16 @@ Controller::Controller()
 {
 	m_model.SetView(&m_view);
 	m_model.LuaSettings();
+	m_modelIsLoaded = false;
 }
 
-void Controller::ModelTest()
+void Controller::ModelTest(string mPath, int iNdex)
 {
-	m_model.ObjectTypeTest();
+	if(!m_modelIsLoaded)
+	{
+	m_model.LoadModels(mPath, iNdex);
+	m_modelIsLoaded = true;
+	}
 }
 
 void Controller::GameCtrl(float t_x, float t_z, float t_lx, float t_lz){

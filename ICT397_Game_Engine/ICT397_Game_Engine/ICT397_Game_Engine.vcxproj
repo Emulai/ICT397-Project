@@ -18,6 +18,7 @@
     <ClCompile Include="Model\NonPlayerCharacter.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="Model\SceneObject.cpp" />
+    <ClCompile Include="View\OffLoader.cpp" />
     <ClCompile Include="View\View.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +31,7 @@
     <ClInclude Include="Model\Objloader.h" />
     <ClInclude Include="Model\Player.h" />
     <ClInclude Include="Model\SceneObject.h" />
+    <ClInclude Include="View\OffLoader.h" />
     <ClInclude Include="View\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -78,6 +80,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

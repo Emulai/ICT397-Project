@@ -5,17 +5,16 @@ View::View()
 	//loaded = false;
 }
 
+void View::LoadModel(string t_modelPath, const int t_index)
+{
+	m_debug = m_off.Load(t_modelPath, t_index);
+	cout << m_debug.c_str() << endl;
+}
 
 void View::Render()
 {
 
-	/*
-	{
-		cube = obj.load("..\Model\Meshes\colMonkey.obj");
-		loaded = true;
-	}
-
-	glCallList(cube);*/
+	
 
 	//Render model from reference list created when models are read
 	//REFERENCE LIST NOT IMPLEMENTED
@@ -25,6 +24,11 @@ void View::Render()
 	//If including the objloader, a pointer will need to be passed to View to point it to the
 	//correct instance of the objloader
 
+}
+
+void View::SetModelNum(int t_size)
+{
+	m_off.SetModelNum(t_size);
 }
 
 void View::GameView(float t_x, float t_z, float t_lx, float t_lz){
