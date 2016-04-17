@@ -1,7 +1,10 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-//#include "..\Model\Objloader.h"
+#include <iostream>
+#include "OffLoader.h"
+
+using namespace std;
 
 class View
 {
@@ -16,6 +19,8 @@ public:
         */
 	View();
 
+	void LoadModel(string t_modelPath, const int t_index);
+
 	/**
         * @brief Renders models from the model list
         *
@@ -27,6 +32,8 @@ public:
         */
 	void Render();
 
+	void SetModelNum(int t_size);
+
 	//////////////////////////
 	//Function to DISPLAY menus here
 	//Menu INTERACTION in Controller
@@ -34,11 +41,9 @@ public:
 
 private:
 
-	//objloader obj;
+	OffLoader m_off;
 
-	//bool loaded;
-
-	//int cube;
+	string m_debug;
 
 };
 

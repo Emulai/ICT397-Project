@@ -1,8 +1,11 @@
-﻿Build started 15/04/2016 10:19:51 PM.
+﻿Build started 17/04/2016 6:02:22 PM.
      1>Project "D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\ICT397_Game_Engine\ICT397_Game_Engine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Installed Programs\Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Model\Model.cpp
+         D:\Installed Programs\Visual Studio\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Model\Model.cpp main.cpp
+         main.cpp
+     1>d:\projects\university\ict397\gitrepo\ict397-project\ict397_game_engine\ict397_game_engine\main.cpp(49): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
          Model.cpp
+         Generating Code...
        Link:
          D:\Installed Programs\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe" /INCREMENTAL /NOLOGO opengl32.lib glu32.lib glut32.lib SDL2.lib SDL2main.lib bass.lib SDL2_image.lib lua5.1.lib luabindd.lib SDL2_mixer.lib ozcollide.lib Bullet2FileLoader_Debug.lib Bullet3Collision_Debug.lib Bullet3Common_Debug.lib Bullet3Dynamics_Debug.lib Bullet3Geometry_Debug.lib Bullet3OpenCL_clew_Debug.lib BulletCollision_Debug.lib BulletDynamics_Debug.lib BulletFileLoader_Debug.lib BulletInverseDynamics_Debug.lib BulletInverseDynamicsUtils_Debug.lib BulletSoftBody_Debug.lib BulletWorldImporter_Debug.lib BulletXmlWorldImporter_Debug.lib ConvexDecomposition_Debug.lib GIMPACTUtils_Debug.lib gtest_Debug.lib gwen_Debug.lib HACD_Debug.lib LinearMath_Debug.lib OpenGLWindow_Debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.lib" /MACHINE:X86 Debug\Controller.obj
          Debug\main.obj
@@ -11,10 +14,11 @@
          Debug\NonPlayerCharacter.obj
          Debug\Player.obj
          Debug\SceneObject.obj
+         Debug\OffLoader.obj
          Debug\View.obj
          ICT397_Game_Engine.vcxproj -> D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\Debug\ICT397_Game_Engine.exe
      1>Done Building Project "D:\Projects\University\ICT397\GitRepo\ICT397-Project\ICT397_Game_Engine\ICT397_Game_Engine\ICT397_Game_Engine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.67
+Time Elapsed 00:00:02.74

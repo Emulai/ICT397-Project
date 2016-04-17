@@ -5,6 +5,7 @@
 #include <stdlib.h> //Standard library - c library
 #include <time.h>
 
+
 //Class Headers
 #include "Controller\Controller.h"
 
@@ -57,7 +58,7 @@ void changeSize(int w, int h) {
 	glViewport(0, 0, w, h);
 
 	// Set the correct perspective.
-	gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+	gluPerspective(45.0f, ratio, 0.1f, 1000.0f);
 
 	// Get Back to the Modelview
 	glMatrixMode(GL_MODELVIEW);
@@ -115,12 +116,7 @@ void checkUp(float deltaUp) {
 bool viewSet = false;
 
 void renderScene(void) {
-
-	if (!viewSet)
-	{
-		g_controller.ModelTest();
-		viewSet = true;
-	}
+	
 	
 
 	if (deltaMove)
@@ -171,6 +167,12 @@ void renderScene(void) {
 		glVertex3f( 0.0f,   0.0f,  -100.0f);
 		glVertex3f(-100.0f, 0.0f,  -100.0f);
 	glEnd();
+
+	glPushMatrix();
+	glScalef(5000, 5000, 5000);
+	glColor3f(0.0f, 0.0f, 1.0f);
+	g_controller.ModelTest("View\\bone.off", 0);
+	glPopMatrix();
 
         glutSwapBuffers();
 } 
@@ -247,9 +249,6 @@ void mouseButton(int button, int state, int x, int y) {
 		}
 	}
 }
-
-
-
 
 int main(int argc, char* argv[]) {
 

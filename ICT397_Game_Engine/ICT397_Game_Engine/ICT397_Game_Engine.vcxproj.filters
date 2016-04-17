@@ -39,6 +39,9 @@
     <ClCompile Include="Model\SceneObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="View\OffLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model\Model.h">
@@ -65,7 +68,10 @@
     <ClInclude Include="Model\SceneObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model\Objloader.h">
+    <ClInclude Include="View\OffLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
