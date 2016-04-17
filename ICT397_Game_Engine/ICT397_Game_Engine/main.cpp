@@ -36,26 +36,22 @@ float deltaAngle = 0.0f;
 float deltaMove = 0;
 int xOrigin = -1;
 
-//Temporarily here for testing, see if can be moved into view later? -Daniel
-//int t_windowHeight =900;
-//int t_windowWidth =1280;
-
 //the state of the game
 //0 is the game, 1 is the menu
 short g_gameState = 0;
 //short g_lastGameState = 0;
 
-void changeSize(int w, int h) {
+void changeSize(int t_w, int t_h) {
 
 	// Prevent a divide by zero, when window is too short
 	// (you cant make a window of zero width).
-	if (h == 0){
-		h = 1;
+	if (t_h == 0){
+		t_h = 1;
 	}
 
-	g_controller.MenuInit(w, h);
+	g_controller.MenuInit(t_w, t_h);
 
-	double ratio =  w * 1.0 / h;
+	double ratio = t_w * 1.0 / t_h;
 
 	// Use the Projection Matrix
 	glMatrixMode(GL_PROJECTION);
@@ -64,7 +60,7 @@ void changeSize(int w, int h) {
 	glLoadIdentity();
 
 	// Set the viewport to be the entire window
-	glViewport(0, 0, w, h);
+	glViewport(0, 0, t_w, t_h);
 
 	if(g_gameState ==0){
 		// Set the correct perspective.
@@ -95,68 +91,23 @@ void renderScene(void) {
 			g_lastGameState=0;
 		}*/
 
-		if (!viewSet)
-		{
+		if (!viewSet){
 			g_controller.ModelTest();
 			viewSet = true;
 		}
 	
 
-		if (deltaMove)
+		if (deltaMove){
 			computePos(deltaMove);
+		}
 
-		// Clear Color and Depth Buffers
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		// Reset transformations
-		glLoadIdentity();
-		// Set the camera
-		gluLookAt(	x,		1.0f,	z,
-					x+lx,	1.0f,	z+lz,
-					0.0f,	1.0f,	0.0f);
-
-	// Draw testing ground
-		glColor3f(0.0f, 0.9f, 0.9f);
-		glBegin(GL_POLYGON);
-			glVertex3f(-100.0f, 0.0f,  100.0f);
-			glVertex3f( 0.0f,   0.0f,  100.0f);
-			glVertex3f( 0.0f,   0.0f,  0.0f);
-			glVertex3f(-100.0f, 0.0f,  0.0f);
-		glEnd();
-
-		glColor3f(0.9f, 0.0f, 0.9f);
-		glBegin(GL_POLYGON);
-			glVertex3f( 0.0f,   0.0f,  100.0f);
-			glVertex3f( 100.0f, 0.0f,  100.0f);
-			glVertex3f( 100.0f, 0.0f,  0.0f);
-			glVertex3f( 0.0f,   0.0f,  0.0f);
-		glEnd();
-
-		glColor3f(0.9f, 0.9f, 0.0f);
-		glBegin(GL_POLYGON);
-			glVertex3f( 0.0f,   0.0f,  0.0f);
-			glVertex3f( 100.0f, 0.0f,  0.0f);
-			glVertex3f( 100.0f, 0.0f,  -100.0f);
-			glVertex3f( 0.0f,   0.0f,  -100.0f);
-		glEnd();
-
-		glColor3f(0.9f, 0.9f, 0.9f);
-		glBegin(GL_POLYGON);
-			glVertex3f(-100.0f, 0.0f,  0.0f);
-			glVertex3f( 0.0f,   0.0f,  0.0f);
-			glVertex3f( 0.0f,   0.0f,  -100.0f);
-			glVertex3f(-100.0f, 0.0f,  -100.0f);
-		glEnd();
-
-		glutSwapBuffers();
+		g_controller.GameCtrl(x, z, lx, lz);
 	}else{//state==1 ie menu
 		/*if(g_lastGameState !=1){//debug stuff
 			cout << "g_gameState == 1" << endl;
 			g_lastGameState=1;
 		}*/
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//
 		g_controller.MenuCtrl();
-		glutSwapBuffers();
 	}
 } 
 

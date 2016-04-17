@@ -28,80 +28,30 @@ public:
         */
 	void ModelTest();
 
+	void GameCtrl(float t_x, float t_z, float t_lx, float t_lz);
+
 	/////////////////////
 	//INTERACTION with menu here
 	//Menu DISPLAY is in View
 	/////////////////////
-	void MenuCtrl(){
-		m_view.MenuView();
-	}
+	void MenuCtrl();
 
-	void Credits(){
-		std::cout << "TODO: ADD CREDITS" << std::endl;
-	}
+	void Credits();
 
-	void Options(){
-		std::cout << "TODO: ADD OPTIONS" << std::endl;
-	}
+	void Options();
 
-	void ListCheckpoints(){
-		std::cout << "TODO: ADD SAVE LIST" << std::endl;
-		std::cout << "TODO: ADD SAVE OPTION" << std::endl;
-		std::cout << "TODO: ADD LOAD OPTION" << std::endl;
-	}
+	void ListCheckpoints();
 
-	void MenuPress(int t_x, int t_y){
-		short l_actionType;
-		extern short g_gameState;
+	void MenuPress(int t_x, int t_y);
 
-		l_actionType = m_view.CheckForButton(t_x, t_y);
+	void MenuInit(float t_windowWidth, float t_windowHeight);
 
-		switch(l_actionType){
-			//terminate program
-			case 1: exit(0);
-				break;
-			case 2: ListCheckpoints();
-				break;
-			case 3: Credits();
-				break;
-			case 4: Options();
-				break;
-			//Exit menu to game state
-			case 5: g_gameState = 0;
-				EnterGameState();
-				break;
-		}
-	}
+	float GetWindowWidth();
+	float GetWindowHeight();
 
-	void MenuInit(float t_windowWidth, float t_windowHeight){
-		m_view.SetLocalWindowSize(t_windowWidth, t_windowHeight);
-	}
+	void EnterMenuState();
 
-	float GetWindowWidth(){
-		return(m_view.GetWindowWidth());
-	}
-	float GetWindowHeight(){
-		return(m_view.GetWindowHeight());
-	}
-
-	void EnterMenuState(){
-		m_view.EnterMenuState();
-	}
-
-	void EnterGameState(){
-		glMatrixMode(GL_PROJECTION);
-
-		glLoadIdentity();
-
-		double l_ratio =  GetWindowWidth() * 1.0 / GetWindowHeight();
-
-		gluPerspective(45.0f, l_ratio, 0.1f, 100.0f);
-		cout << "Switching to game state" <<endl;
-		glEnable(GLUT_DEPTH);
-
-		glMatrixMode(GL_MODELVIEW);
-		glutPostRedisplay();
-	}
+	void EnterGameState();
 
 private:
 
