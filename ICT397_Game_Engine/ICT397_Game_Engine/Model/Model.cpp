@@ -10,6 +10,9 @@ Model::Model()
 	m_test.y = 400;
 	m_test.z = 672.77f;
 
+	m_npcCount = 12;
+	m_sOCount = 7;
+
 }
 
 Model::~Model()
@@ -32,60 +35,122 @@ void Model::SetView(View *t_view)
 void Model::SetGOSize(int t_size)
 {
 	m_goArray = new GameObject *[t_size];
-	m_view->SetModelNum(t_size);
-	m_objectCount = t_size;
 }
 
 void Model::CreateGameObject(const string t_description, int t_index, float t_transformX, float t_transformY, float t_transformZ, float t_rotationX,
 							 float t_rotationY, float t_rotationZ, string t_modelPath, string t_aiPath, int t_health, bool t_hostility, bool t_staticity)
 {
-	
 	m_goArray[t_index] = m_gAF.NewGameObject(t_description);
-	
+
 	m_goArray[t_index]->TransformX(t_transformX);
 	m_goArray[t_index]->TransformY(t_transformY);
 	m_goArray[t_index]->TransformZ(t_transformZ);
-	
+
 	m_goArray[t_index]->RotationX(t_rotationX);
 	m_goArray[t_index]->RotationY(t_rotationY);
 	m_goArray[t_index]->RotationZ(t_rotationZ);
-	
+
 	m_goArray[t_index]->ModelPath(t_modelPath);
 	m_goArray[t_index]->AIPath(t_aiPath);
 
 	m_goArray[t_index]->Health(t_health);
-	m_goArray[t_index]->Index(t_index);
-	
+
 	m_goArray[t_index]->IsHostile(t_hostility);
 	m_goArray[t_index]->Staticity(t_staticity);
-	
+
 }
 
 void Model::ObjectTypeTest()
 {
 	if (!m_tested){
 
-		SetGOSize(5);
-		CreateGameObject("player", 0, 1, 2, 3, 4, 5, 6, "tree", "hugger", 50, true, false);
-		CreateGameObject("player", 1, 1, 2, 3, 4, 5, 6, "tree", "hugger", 60, true, false);
-		CreateGameObject("player", 2, 1, 2, 3, 4, 5, 6, "tree", "hugger", 70, true, false);
-		cout << m_goArray[0]->Health() << endl;
+		/*GameObject *newGameObject = CreateGameObject("player");
+
+		newGameObject->IsHostile();
+
+		newGameObject = CreateGameObject("scene");
+
+		newGameObject->IsHostile();
+
+		GameObject *newerGameObject = CreateGameObject("npc");
+		newGameObject = CreateGameObject("npc");
+
+		newGameObject->Health(100);
+		newerGameObject->Health(50);
+
+		cout << "NPC 1: " << newGameObject->Health() << endl;
+		cout << "NPC 2: " << newerGameObject->Health() << endl;*/
+
+
+		//GameObject
+
+		/*m_player.Transform(m_test);
+		m_player.Rotation(m_test);
+
+		cout << "Player Transform >> " << m_player.TransformX() << " " << m_player.TransformY() << " " << m_player.TransformZ() << " <<" << endl;
+		cout << "Player Rotation >> " << m_player.RotationX() << " " << m_player.RotationY() << " " << m_player.RotationZ() << " <<" << endl;
+
+		m_player.TransformX(50);
+		m_player.TransformY(100);
+		m_player.TransformZ(70);
+
+		m_player.RotationX(90);
+		m_player.RotationY(57);
+		m_player.RotationZ(12);
+
+		Vector3 f_tTest = m_player.Transform();
+		Vector3 f_rTest = m_player.Rotation();
+
+		cout << "Player Transform >> " << f_tTest.x << " " << f_tTest.y << " " << f_tTest.z << " <<" << endl;
+		cout << "Player Rotation >> " << f_rTest.x << " " << f_rTest.y << " " << f_rTest.z << " <<" << endl;
+
+		float f_tX, f_tY, f_tZ, f_rX, f_rY, f_rZ;
+
+		f_tX = m_player.TransformX();
+		f_tY = m_player.TransformY();
+		f_tZ = m_player.TransformZ();
+
+		f_rX = m_player.RotationX();
+		f_rY = m_player.RotationY();
+		f_rZ = m_player.RotationZ();
+
+		cout << "Player Transform >> " << f_tX << " " << f_tY << " " << f_tZ << " <<" << endl;
+		cout << "Player Rotation >> " << f_rX << " " << f_rY << " " << f_rZ << " <<" << endl;
+
+		m_player.ModelReference(7);
+
+		cout << "Model Path Here >> " << m_player.ModelReference() << " <<" << endl;
+
+		//Player
+
+		m_player.Health(289);
+
+		cout << "Player Health >> " << m_player.Health() << " <<" << endl;
+
+		//NPC
+
+		m_npc = new NonPlayerCharacter[m_npcCount];
+
+		m_npc[10].Health(6);
+		m_npc[5].IsHostile(true);
+		m_npc[1].AIPath("Banana");
+
+		cout << "NPC Health >> " << m_npc[10].Health() << " <<" << endl; 
+		cout << "NPC Hostility >> " << m_npc[5].IsHostile() << " <<" << endl; 
+		cout << "NPC AI Path >> " << m_npc[1].AIPath() << " <<" << endl;
+
+		//Scene Object
+		
+		m_sObject = new SceneObject[m_sOCount];
+
+		m_sObject[2].Staticity(false);
+
+		cout << "Scene Object Staticity >> " << m_sObject[2].Staticity() << " <<" << endl;*/
+
 		m_tested = true;
 	}
 
 	m_view->Render();
-}
-
-void Model::LoadModels(string mPath, int iNdex)
-{
-	/* i = 0; i < m_objectCount; i++)
-		{
-
-			m_view->LoadModel(m_goArray[i]->ModelPath(), m_goArray[i]->Index());
-
-		}*/
-	m_view->SetModelNum(50);
-	m_view->LoadModel(mPath, iNdex);
 }
 
 void Model::SendToView()
