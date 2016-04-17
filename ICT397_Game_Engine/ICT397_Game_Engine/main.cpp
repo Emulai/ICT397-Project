@@ -13,10 +13,12 @@
 #include <stdlib.h> //Standard library - c library
 #include <time.h>
 
+
 #include <iostream>
 #include <cstdio>
 using namespace std;
 #include <lua.hpp>
+
 
 
 //Class Headers
@@ -77,6 +79,12 @@ void changeSize(int t_w, int t_h) {
 	glLoadIdentity();
 
 	// Set the viewport to be the entire window
+
+	glViewport(0, 0, w, h);
+
+	// Set the correct perspective.
+	gluPerspective(45.0f, ratio, 0.1f, 1000.0f);
+
 	glViewport(0, 0, t_w, t_h);
 
 	if(g_gameState ==0){
@@ -86,6 +94,7 @@ void changeSize(int t_w, int t_h) {
 		gluOrtho2D(0.0f, g_controller.GetWindowWidth(), 0.0f, g_controller.GetWindowHeight());
 		g_controller.MenuInit(g_controller.GetWindowWidth(), g_controller.GetWindowHeight());
 	}
+
 
 	// Get Back to the Modelview
 	glMatrixMode(GL_MODELVIEW);
@@ -119,6 +128,7 @@ bool viewSet = false;
 
 void renderScene(void) {
 
+
 	if(g_gameState == 0){//ie. game state
 		/*if(g_lastGameState !=0){//debug stuff
 			cout << "g_gameState == 0" <<endl;
@@ -129,6 +139,7 @@ void renderScene(void) {
 			g_controller.ModelTest();
 			viewSet = true;
 		}
+
 	
 
 		if (deltaMove){
@@ -136,6 +147,59 @@ void renderScene(void) {
 		}
 
 		checkUp(deltaUp);
+
+
+	// Clear Color and Depth Buffers
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// Reset transformations
+	glLoadIdentity();
+
+	gluLookAt(	x, 9.0f, z,
+			x + lx, u,  z + lz,
+			0.0f, 1.0f,  0.0f);
+
+// Draw ground
+
+	glColor3f(0.0f, 0.9f, 0.9f);
+	glBegin(GL_POLYGON);
+		glVertex3f(-100.0f, 0.0f,  100.0f);
+		glVertex3f( 0.0f,   0.0f,  100.0f);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+		glVertex3f(-100.0f, 0.0f,  0.0f);
+	glEnd();
+
+	glColor3f(0.9f, 0.0f, 0.9f);
+	glBegin(GL_POLYGON);
+		glVertex3f( 0.0f,   0.0f,  100.0f);
+		glVertex3f( 100.0f, 0.0f,  100.0f);
+		glVertex3f( 100.0f, 0.0f,  0.0f);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+	glEnd();
+
+	glColor3f(0.9f, 0.9f, 0.0f);
+	glBegin(GL_POLYGON);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+		glVertex3f( 100.0f, 0.0f,  0.0f);
+		glVertex3f( 100.0f, 0.0f,  -100.0f);
+		glVertex3f( 0.0f,   0.0f,  -100.0f);
+	glEnd();
+
+	glColor3f(0.9f, 0.9f, 0.9f);
+	glBegin(GL_POLYGON);
+		glVertex3f(-100.0f, 0.0f,  0.0f);
+		glVertex3f( 0.0f,   0.0f,  0.0f);
+		glVertex3f( 0.0f,   0.0f,  -100.0f);
+		glVertex3f(-100.0f, 0.0f,  -100.0f);
+	glEnd();
+
+	glPushMatrix();
+	glScalef(5000, 5000, 5000);
+	glColor3f(0.0f, 0.0f, 1.0f);
+	g_controller.ModelTest("View\\bone.off", 0);
+	glPopMatrix();
+
+        glutSwapBuffers();
 
 		g_controller.GameCtrl(x, z, lx, lz);
 	}else{//state==1 ie menu
@@ -145,6 +209,7 @@ void renderScene(void) {
 		}*/
 		g_controller.MenuCtrl();
 	}
+
 } 
 
 void processNormalKeys(unsigned char key, int xx, int yy)
@@ -233,87 +298,8 @@ void mouseButton(int button, int state, int x, int y) {
 	}
 }
 
-int multiply(int a, int b)
-{
-  return a*b;
-}
-
-int add(int a, int b)
-{
-  return a+b;
-}
-
-int cpp_Multiply(lua_State* luaVM)
-{ 
-	//determine number of params on the stack
-    int numParams=lua_gettop(luaVM);
-    if(numParams!=2) {
-	   cout<<"not enough params"<<endl;
-	   return 0;
-    }
-    if(!lua_isnumber(luaVM,1)||!lua_isnumber(luaVM,2)){
-	  cout<<"bad params"<<endl;
-	  return 0;
-	}
-
-    //pull params off stack
-   int num1=(int)lua_tonumber(luaVM,1);
-   int num2=(int)lua_tonumber(luaVM,2);
-   //call the real function
-   int result=multiply(num1,num2);
-   //push result onto the stack
-   lua_pushnumber(luaVM,result);
-   return 1;  //return the number of values returned
-}
-
-int cpp_Add(lua_State* luaVM)
-{ 
-	//determine number of params on the stack
-    int numParams=lua_gettop(luaVM);
-    if(numParams!=2) {
-	   cout<<"not enough params"<<endl;
-	   return 0;
-    }
-    if(!lua_isnumber(luaVM,1)||!lua_isnumber(luaVM,2)){
-	  cout<<"bad params"<<endl;
-	  return 0;
-	}
-
-    //pull params off stack
-   int num1=(int)lua_tonumber(luaVM,1);
-   int num2=(int)lua_tonumber(luaVM,2);
-   //call the real function
-   int added=add(num1,num2);
-   //push result onto the stack
-   lua_pushnumber(luaVM,added);
-   return 1;  //return the number of values returned
-}
 
 int main(int argc, char* argv[]) {
-
-	//create lua state
-    lua_State* L = lua_open();
-    if (L==NULL){
-       cout<<"Error Initializing lua"<<endl;;
-       return -1;
-    }
-	lua_register(L,"cpp_Add",cpp_Add);
-	// reister the wrapper function
-    lua_register(L,"cpp_Multiply",cpp_Multiply);
-
-    // load standard lua library functions
-    luaL_openlibs(L);
-
-	// load and run Lua script
-    if (luaL_dofile(L, "script4.lua" )){
-		cout<<"error opening file\n";
-	
-	    getchar(); return 1;
-	}
-
-    lua_close(L);
-    //getchar();
-	//return 0;
 	
 
 	// init GLUT and create window

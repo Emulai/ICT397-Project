@@ -1,9 +1,14 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-//#include "..\Model\Objloader.h"
+
 #include <iostream>
+#include "OffLoader.h"
+
+using namespace std;
+
 #include <GL/glut.h>
+
 
 class View
 {
@@ -18,6 +23,8 @@ public:
         */
 	View();
 
+	void LoadModel(string t_modelPath, const int t_index);
+
 	/**
         * @brief Renders models from the model list
         *
@@ -29,7 +36,11 @@ public:
         */
 	void Render();
 
+
+	void SetModelNum(int t_size);
+
 	void GameView(float t_x, float t_z, float t_lx, float t_lz);
+
 
 	//////////////////////////
 	//Function to DISPLAY menus here
@@ -58,13 +69,17 @@ public:
 
 private:
 
+
+	OffLoader m_off;
+
 	float m_windowWidth, m_windowHeight;
 
 	//objloader obj;
 
 	//bool loaded;
 
-	//int cube;
+
+	string m_debug;
 
 };
 

@@ -1,10 +1,16 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+
+#include <string.h>
+
 #include<iostream>
+
 
 #include "..\View\View.h"
 #include "..\Model\Model.h"
+
+using namespace std;
 
 class Controller
 {
@@ -26,7 +32,7 @@ public:
         *
         * @return void
         */
-	void ModelTest();
+	void ModelTest(string mPath, int iNdex);
 
 	void GameCtrl(float t_x, float t_z, float t_lx, float t_lz);
 
@@ -57,6 +63,8 @@ private:
 
 	Model m_model;
 	View m_view;
+
+	bool m_modelsLoaded;
 
 };
 
