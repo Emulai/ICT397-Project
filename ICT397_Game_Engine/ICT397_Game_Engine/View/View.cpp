@@ -86,6 +86,10 @@ void View::SetLocalWindowSize(float t_newWindowWidth, float t_newWindowHeight){
 
 void View::EnterMenuState(){
 	std::cout << "Switching to menu state" << std::endl;
+	std::cout << "Early prototype, some functionality missing" << std::endl
+		<< "From top to bottom, functionality is \n\tResume\n\tOptions(unimplemented)" << std::endl
+		<< "\tCredits(unimplemented)\n\tListCheckpoints[includes save/load](unimplemented)" << std::endl
+		<< "\tExit" << std::endl;
 	glMatrixMode(GL_PROJECTION);
 
 	glLoadIdentity();

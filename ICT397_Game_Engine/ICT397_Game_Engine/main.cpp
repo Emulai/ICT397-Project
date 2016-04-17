@@ -114,22 +114,6 @@ void checkUp(float deltaUp) {
         u=10.5;
 }
 
-void computeDir(float deltaAngle) {
-
-	angle += deltaAngle;
-	lx = sin(angle);
-	lz = -cos(angle);
-}
-
-void checkUp(float deltaUp) {
-
-	u = u+deltaUp;
-	if(u <= 7.5)
-        u=7.5;
-    if (u >=10.5)
-        u=10.5;
-}
-
 bool viewSet = false;
 
 void renderScene(void) {
@@ -330,9 +314,6 @@ int main(int argc, char* argv[]) {
     //getchar();
 	//return 0;
 	
-
-
->>>>>>> master
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
