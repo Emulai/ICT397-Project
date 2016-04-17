@@ -59,8 +59,6 @@ public:
         */
 	void ObjectTypeTest();
 
-	void LoadModels(string mPath, int iNdex);
-
 	/**
         * @brief Passes model references to View
         *
@@ -101,7 +99,8 @@ private:
 
 	Vector3 m_test;
 
-	int m_objectCount;
+	int m_npcCount;
+	int m_sOCount;
 
 };
 

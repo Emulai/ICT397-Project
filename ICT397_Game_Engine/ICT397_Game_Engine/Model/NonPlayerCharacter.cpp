@@ -55,11 +55,6 @@ int NonPlayerCharacter::Health() const
 	return m_health;
 }
 
-int NonPlayerCharacter::Index() const
-{
-	return m_index;
-}
-
 bool NonPlayerCharacter::IsHostile() const
 {
 	return m_hostility;
@@ -126,11 +121,6 @@ void NonPlayerCharacter::AIPath(string t_aiPath)
 void NonPlayerCharacter::Health(int t_health)
 {
 	m_health = t_health;
-}
-
-void NonPlayerCharacter::Index(int t_index)
-{
-	m_index = t_index;
 }
 
 void NonPlayerCharacter::IsHostile(bool t_hostility)
