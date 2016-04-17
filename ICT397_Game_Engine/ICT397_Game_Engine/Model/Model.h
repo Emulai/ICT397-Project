@@ -1,12 +1,16 @@
 #ifndef MODEL_H
 #define MODEL_H
-
+#include <cstdio>
 #include <iostream>
-
-#include "ObjectType.h"
+#include <lua.hpp>
+#include "GameAssetFactory.h"
 #include "..\View\View.h"
-
+#pragma comment(lib, "lua5.1.lib")
+#pragma comment(lib, "luabindd.lib")
 using namespace std;
+
+#include <cstdio>
+
 
 
 class Model
@@ -41,6 +45,10 @@ public:
         */
 	void SetView(View *t_view);
 
+	void SetGOSize(int t_size);
+
+	void CreateGameObject(const string t_description, int t_index, float t_transformX, float t_transformY, float t_transformZ, float t_rotationX, float t_rotationY, float t_rotationZ, string t_modelPath, string t_aiPath, int t_health, bool t_hostility, bool t_staticity);
+
 	/**
         * @brief Runs the ObjectType test
         *
@@ -60,6 +68,9 @@ public:
         * @return void
         */
 	void SendToView();
+	//int multiply(int a, int b);
+	//int cpp_Multiply(lua_State* luaVM);
+	void LuaSettings();	
 
 	//////////////////////
 	//Checkpoint system here
@@ -80,9 +91,9 @@ private:
 
 	View *m_view;
 
-	Player				 m_player;
-	NonPlayerCharacter	*m_npc;
-	SceneObject			*m_sObject;
+	GameAssetFactory m_gAF;
+
+	GameObject **m_goArray;
 
 	bool m_tested;
 

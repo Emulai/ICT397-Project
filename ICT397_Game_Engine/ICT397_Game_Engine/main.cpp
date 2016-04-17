@@ -1,4 +1,3 @@
-
 //Library Headers
 #include <math.h>
 #include <GL/glut.h>
@@ -6,13 +5,19 @@
 #include <time.h>
 //#include <InputManager.h>
 
+#include <stdlib.h>
+
+//Library Headers
+#include <math.h>
+#include <GL/glut.h> //
+#include <stdlib.h> //Standard library - c library
+#include <time.h>
+
 #include <iostream>
 #include <cstdio>
 using namespace std;
 #include <lua.hpp>
 
-#include <stdlib.h>
-#include <math.h>
 
 //Class Headers
 #include "Controller\Controller.h"
@@ -40,6 +45,7 @@ float lx=0.0f,lz=-1.0f;
 // XZ position of the camera
 float x=0.0f, z=0.0f;
 float u = 9.0;
+
 // the key states. These variables will be zero
 //when no key is being presses
 float deltaAngle = 0.0f;
@@ -90,6 +96,22 @@ void computePos(float deltaMove) {
 		x += deltaMove * lx * 0.1f;
 		z += deltaMove * lz * 0.1f;
 	}
+}
+
+void computeDir(float deltaAngle) {
+
+	angle += deltaAngle;
+	lx = sin(angle);
+	lz = -cos(angle);
+}
+
+void checkUp(float deltaUp) {
+
+	u = u+deltaUp;
+	if(u <= 7.5)
+        u=7.5;
+    if (u >=10.5)
+        u=10.5;
 }
 
 void computeDir(float deltaAngle) {
@@ -171,7 +193,6 @@ void processNormalKeys(unsigned char key, int xx, int yy)
    }
 }
 
-
 void releaseKey(unsigned char key, int xx, int yy) {
 
 	switch (key) {
@@ -199,10 +220,12 @@ void mouseMove(int x, int y) {
 		lz = -cos(angle + deltaAngle);
 		}
 	}
+
+
+		
 }
 
 void mouseButton(int button, int state, int x, int y) {
-
 	if(g_gameState==0){
 		// only start motion if the left button is pressed
 		if (button == GLUT_LEFT_BUTTON) {
@@ -306,7 +329,10 @@ int main(int argc, char* argv[]) {
     lua_close(L);
     //getchar();
 	//return 0;
+	
 
+
+>>>>>>> master
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -322,7 +348,7 @@ int main(int argc, char* argv[]) {
 	glutKeyboardFunc(processNormalKeys);
 	//glutSpecialFunc(processSpecialKeys);
 	//glutIgnoreKeyRepeat(1);
-
+	
 	glutKeyboardUpFunc(releaseKey);
 	glutMouseFunc(mouseButton);
 	glutMotionFunc(mouseMove);

@@ -13,16 +13,23 @@
   <ItemGroup>
     <ClCompile Include="Controller\Controller.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Model\GameObject.cpp" />
+    <ClCompile Include="Model\GameAssetFactory.cpp" />
     <ClCompile Include="Model\Model.cpp" />
-    <ClCompile Include="Model\ObjectType.cpp" />
+    <ClCompile Include="Model\NonPlayerCharacter.cpp" />
+    <ClCompile Include="Model\Player.cpp" />
+    <ClCompile Include="Model\SceneObject.cpp" />
     <ClCompile Include="View\View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller\Controller.h" />
+    <ClInclude Include="Model\GameAssetFactory.h" />
     <ClInclude Include="Model\GameObject.h" />
     <ClInclude Include="Model\Model.h" />
+    <ClInclude Include="Model\NonPlayerCharacter.h" />
     <ClInclude Include="Model\ObjectType.h" />
+    <ClInclude Include="Model\Objloader.h" />
+    <ClInclude Include="Model\Player.h" />
+    <ClInclude Include="Model\SceneObject.h" />
     <ClInclude Include="View\View.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -56,7 +63,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\Libraries\bullet3-2.83.7\bullet3-2.83.7\src;.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\include;.\Libraries\lua5.1\include;.\Libraries\SDL2-2.0.4\include;.\Libraries\freeglut\include;$(IncludePath)</IncludePath>
+    <IncludePath>.\Libraries\glm;.\Libraries\bullet3-2.83.7\bullet3-2.83.7\src;.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\include;.\Libraries\lua5.1\include;.\Libraries\SDL2-2.0.4\include;.\Libraries\freeglut\include;$(IncludePath)</IncludePath>
     <LibraryPath>.\Libraries\bullet3-2.83.7\bullet3-2.83.7\lib;.\Libraries\bass24\c;.\Libraries\lua5.1\lib;.\Libraries\SDL2-2.0.4\lib\x86;.\Libraries\freeglut\lib;.\Libraries\ozcollidelib_1-1-2\ozcollidelib_1-1-2\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
