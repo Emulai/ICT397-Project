@@ -33,65 +33,96 @@ public:
 	//Menu INTERACTION in Controller
 	//////////////////////////
 
-	void MenuView(int windowHeight, int windowWidth){
+	void SetLocalWindowSize(float newWindowWidth, float newWindowHeight){
+		m_windowWidth = newWindowWidth;
+		m_windowHeight = newWindowHeight;
+	}
+
+	void EnterMenuState(){
+		std::cout << "Switching to menu state" << std::endl;
+		glMatrixMode(GL_PROJECTION);
+
+		glLoadIdentity();
+		gluOrtho2D(0.0f, GetWindowWidth(), 0.0f, GetWindowHeight());// 0.0f, 0.0f, 1.0f
+		//glDisable(GLUT_DEPTH);
+
+		glMatrixMode(GL_MODELVIEW);
+		glutPostRedisplay();
+	}
+
+	void MenuView(){
 		glLoadIdentity();
 		gluLookAt(	0.0, 1.0f, 0.0,
 					0.0, 1.0f,  -1.0,
 					0.0f, 1.0f,  0.0f);
 
-		glColor3f(0.5f,0.5f,0.5f);
 		glBegin(GL_QUADS);
-			glVertex3i(0, 0, 0);
-			glVertex3i(0, windowHeight, 0);
-			glVertex3i(windowWidth, windowHeight, 0);
-			glVertex3i(windowWidth, 0, 0);
+			glColor3f(0.5f,0.5f,0.5f);
+			glVertex3f(0, 0, 0);
+			glVertex3f(0, m_windowHeight, 0);
+			glVertex3f(m_windowWidth, m_windowHeight, 0);
+			glVertex3f(m_windowWidth, 0, 0);
 		glEnd();
 
-		glColor3f(1.0, 0.0, 0.75);
 		glBegin(GL_POLYGON);
-			glVertex3f(2*windowWidth/3, windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 2*windowHeight/10, 0.1);
-			glVertex3f(2*windowWidth/3, 2*windowHeight/10, 0.1);
+			glColor3f(1.0, 0.0, 0.75);
+			glVertex3f(2*m_windowWidth/3, m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 2*m_windowHeight/10, 0.1f);
+			glVertex3f(2*m_windowWidth/3, 2*m_windowHeight/10, 0.1f);
 		glEnd();
 
-		glColor3f(1.0, 1.0, 1.0);
 		glBegin(GL_POLYGON);
-			glVertex3f(2*windowWidth/3, 2*windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 2*windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 3*windowHeight/10, 0.1);
-			glVertex3f(2*windowWidth/3, 3*windowHeight/10, 0.1);
+			glColor3f(1.0, 1.0, 1.0);
+			glVertex3f(2*m_windowWidth/3, 2*m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 2*m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 3*m_windowHeight/10, 0.1f);
+			glVertex3f(2*m_windowWidth/3, 3*m_windowHeight/10, 0.1f);
 		glEnd();
 
-		glColor3f(0.0, 1.0, 1.0);
 		glBegin(GL_POLYGON);
-			glVertex3f(2*windowWidth/3, 3*windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 3*windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 4*windowHeight/10, 0.1);
-			glVertex3f(2*windowWidth/3, 4*windowHeight/10, 0.1);
+			glColor3f(0.0, 1.0, 1.0);
+			glVertex3f(2*m_windowWidth/3, 3*m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 3*m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 4*m_windowHeight/10, 0.1f);
+			glVertex3f(2*m_windowWidth/3, 4*m_windowHeight/10, 0.1f);
 		glEnd();
 
 		glBegin(GL_POLYGON);
 			glColor3f(1.0, 0.0, 0.0);
-			glVertex3f(2*windowWidth/3, 4*windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 4*windowHeight/10, 0.1);
+			glVertex3f(2*m_windowWidth/3, 4*m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 4*m_windowHeight/10, 0.1f);
 			glColor3f(0.0, 0.0, 1.0);
-			glVertex3f(windowWidth/3, 5*windowHeight/10, 0.1);
-			glVertex3f(2*windowWidth/3, 5*windowHeight/10, 0.1);
+			glVertex3f(m_windowWidth/3, 5*m_windowHeight/10, 0.1f);
+			glVertex3f(2*m_windowWidth/3, 5*m_windowHeight/10, 0.1f);
 		glEnd();
 
 		glBegin(GL_POLYGON);
 			glColor3f(1.0, 0.0, 1.0);
-			glVertex3f(2*windowWidth/3, 5*windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 5*windowHeight/10, 0.1);
-			glVertex3f(windowWidth/3, 6*windowHeight/10, 0.1);
-			glVertex3f(2*windowWidth/3, 6*windowHeight/10, 0.1);
+			glVertex3f(2*m_windowWidth/3, 5*m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 5*m_windowHeight/10, 0.1f);
+			glVertex3f(m_windowWidth/3, 6*m_windowHeight/10, 0.1f);
+			glVertex3f(2*m_windowWidth/3, 6*m_windowHeight/10, 0.1f);
 		glEnd();
+	}
+
+	short CheckForButton(int x, int y){
+		if(x >= (2*m_windowWidth/3) && x >= (m_windowWidth/3)){
+
+		}
+		return(0);
+	}
+
+	float GetWindowWidth(){
+		return(m_windowWidth);
+	}
+	float GetWindowHeight(){
+		return(m_windowHeight);
 	}
 
 private:
 
-
+	float m_windowWidth, m_windowHeight;
 
 };
 

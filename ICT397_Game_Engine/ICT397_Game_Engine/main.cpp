@@ -37,23 +37,23 @@ float deltaMove = 0;
 int xOrigin = -1;
 
 //Temporarily here for testing, see if can be moved into view later? -Daniel
-int windowHeight =900;
-int windowWidth =1280;
+//int t_windowHeight =900;
+//int t_windowWidth =1280;
 
 //the state of the game
 //0 is the game, 1 is the menu
-short gameState = 0;
-short lastGameState = 0;
+short g_gameState = 0;
+//short g_lastGameState = 0;
 
 void changeSize(int w, int h) {
 
 	// Prevent a divide by zero, when window is too short
 	// (you cant make a window of zero width).
-	if (h == 0)
+	if (h == 0){
 		h = 1;
+	}
 
-	windowHeight = h;
-	windowWidth = w;
+	g_controller.MenuInit(w, h);
 
 	double ratio =  w * 1.0 / h;
 
@@ -66,11 +66,12 @@ void changeSize(int w, int h) {
 	// Set the viewport to be the entire window
 	glViewport(0, 0, w, h);
 
-	if(gameState ==0){
+	if(g_gameState ==0){
 		// Set the correct perspective.
 		gluPerspective(45.0f, ratio, 0.1f, 100.0f);
-	}else{// ie gamestate ==1
-		gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);
+	}else{// ie g_gameState ==1
+		gluOrtho2D(0.0f, g_controller.GetWindowWidth(), 0.0f, g_controller.GetWindowHeight());
+		g_controller.MenuInit(g_controller.GetWindowWidth(), g_controller.GetWindowHeight());
 	}
 
 	// Get Back to the Modelview
@@ -78,7 +79,7 @@ void changeSize(int w, int h) {
 }
 
 void computePos(float deltaMove) {
-	if(gameState==0){
+	if(g_gameState==0){
 		x += deltaMove * lx * 0.1f;
 		z += deltaMove * lz * 0.1f;
 	}
@@ -88,11 +89,11 @@ bool viewSet = false;
 
 void renderScene(void) {
 
-	if(gameState == 0){//ie. game state
-		if(lastGameState !=0){//debug stuff
-			cout << "gameState == 0" <<endl;
-			lastGameState=0;
-		}
+	if(g_gameState == 0){//ie. game state
+		/*if(g_lastGameState !=0){//debug stuff
+			cout << "g_gameState == 0" <<endl;
+			g_lastGameState=0;
+		}*/
 
 		if (!viewSet)
 		{
@@ -114,7 +115,7 @@ void renderScene(void) {
 					x+lx,	1.0f,	z+lz,
 					0.0f,	1.0f,	0.0f);
 
-	// Draw ground
+	// Draw testing ground
 		glColor3f(0.0f, 0.9f, 0.9f);
 		glBegin(GL_POLYGON);
 			glVertex3f(-100.0f, 0.0f,  100.0f);
@@ -149,12 +150,12 @@ void renderScene(void) {
 
 		glutSwapBuffers();
 	}else{//state==1 ie menu
-		if(lastGameState !=1){//debug stuff
-			cout << "gameState == 1" << endl;
-			lastGameState=1;
-		}
+		/*if(g_lastGameState !=1){//debug stuff
+			cout << "g_gameState == 1" << endl;
+			g_lastGameState=1;
+		}*/
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//
-		g_controller.MenuCtrl(windowHeight, windowWidth);
+		g_controller.MenuCtrl();
 		glutSwapBuffers();
 	}
 } 
@@ -162,38 +163,18 @@ void renderScene(void) {
 void processNormalKeys(unsigned char key, int xx, int yy) { 	
 
 	if (key == 27){
-		if(gameState == 0){
-			
-			cout << "Switching to menu state" <<endl;
-			gameState = 1;
-			glMatrixMode(GL_PROJECTION);
-
-			glLoadIdentity();
-			gluOrtho2D(0.0f, windowWidth, 0.0f, windowHeight);// 0.0f, 0.0f, 1.0f
-			//glDisable(GLUT_DEPTH);
-
-			glMatrixMode(GL_MODELVIEW);
-			glutPostRedisplay();
+		if(g_gameState == 0){
+			g_controller.EnterMenuState();
+			g_gameState = 1;
 		}else{
-			gameState = 0;
-			glMatrixMode(GL_PROJECTION);
-
-			glLoadIdentity();
-
-			double ratio =  windowWidth * 1.0 / windowHeight;
-
-			gluPerspective(45.0f, ratio, 0.1f, 100.0f);
-			cout << "Switching to game state" <<endl;
-			glEnable(GLUT_DEPTH);
-
-			glMatrixMode(GL_MODELVIEW);
-			glutPostRedisplay();
+			g_controller.EnterGameState();
+			g_gameState = 0;
 		}
 	}
 } 
 
 void pressKey(int key, int xx, int yy) {
-	if(gameState==0){
+	if(g_gameState==0){
 		switch (key) {
 			case GLUT_KEY_UP : deltaMove = 0.5f; break;
 			case GLUT_KEY_DOWN : deltaMove = -0.5f; break;
@@ -210,7 +191,7 @@ void releaseKey(int key, int x, int y) {
 } 
 
 void mouseMove(int x, int y) { 	
-	if(gameState==0){
+	if(g_gameState==0){
 		// this will only be true when the left button is down
 		if (xOrigin >= 0) {
 
@@ -226,16 +207,22 @@ void mouseMove(int x, int y) {
 
 void mouseButton(int button, int state, int x, int y) {
 
-	// only start motion if the left button is pressed
-	if (button == GLUT_LEFT_BUTTON) {
+	if(g_gameState==0){
+		// only start motion if the left button is pressed
+		if (button == GLUT_LEFT_BUTTON) {
 
-		// when the button is released
-		if (state == GLUT_UP) {
-			angle += deltaAngle;
-			xOrigin = -1;
+			// when the button is released
+			if (state == GLUT_UP) {
+				angle += deltaAngle;
+				xOrigin = -1;
+			}
+			else  {// state = GLUT_DOWN
+				xOrigin = x;
+			}
 		}
-		else  {// state = GLUT_DOWN
-			xOrigin = x;
+	}else{//ie menuState
+		if (button == GLUT_LEFT_BUTTON) {
+			g_controller.MenuPress(x,y);
 		}
 	}
 }
@@ -246,7 +233,7 @@ int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100,100);
-	glutInitWindowSize(windowWidth, windowHeight);
+	glutInitWindowSize(800, 600);
 	glutCreateWindow("ICT397_Game_Engine");
 
 	// register callbacks

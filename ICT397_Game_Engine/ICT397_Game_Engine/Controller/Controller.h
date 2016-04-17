@@ -32,8 +32,42 @@ public:
 	//INTERACTION with menu here
 	//Menu DISPLAY is in View
 	/////////////////////
-	void MenuCtrl(int windowHeight, int windowWidth){
-		m_view.MenuView(windowHeight, windowWidth);
+	void MenuCtrl(){
+		m_view.MenuView();
+	}
+
+	void MenuPress(int x, int y){
+		m_view.CheckForButton(x, y);
+	}
+
+	void MenuInit(float windowWidth, float windowHeight){
+		m_view.SetLocalWindowSize(windowWidth, windowHeight);
+	}
+
+	float GetWindowWidth(){
+		return(m_view.GetWindowWidth());
+	}
+	float GetWindowHeight(){
+		return(m_view.GetWindowHeight());
+	}
+
+	void EnterMenuState(){
+		m_view.EnterMenuState();
+	}
+
+	void EnterGameState(){
+		glMatrixMode(GL_PROJECTION);
+
+		glLoadIdentity();
+
+		double ratio =  GetWindowWidth() * 1.0 / GetWindowHeight();
+
+		gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+		cout << "Switching to game state" <<endl;
+		glEnable(GLUT_DEPTH);
+
+		glMatrixMode(GL_MODELVIEW);
+		glutPostRedisplay();
 	}
 
 private:
