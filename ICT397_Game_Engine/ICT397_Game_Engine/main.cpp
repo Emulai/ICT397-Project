@@ -114,8 +114,6 @@ void checkUp(float deltaUp) {
         u=10.5;
 }
 
-bool viewSet = false;
-
 void renderScene(void) {
 
 	if(g_gameState == 0){//ie. game state
