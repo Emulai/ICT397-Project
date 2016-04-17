@@ -80,11 +80,11 @@ void OffLoader::Draw(const int t_index)
         case 3://Triangles
             glBegin(GL_TRIANGLES);
             glVertex3f((m_objectList[t_index].facets)[i].coord1.x, (m_objectList[t_index].facets)[i].coord1.y, (m_objectList[t_index].facets)[i].coord1.z);
-			cout << "Vert 1 >> " << m_objectList[t_index].facets[i].coord1.x << ", " << m_objectList[t_index].facets[i].coord1.y << ", " << m_objectList[t_index].facets[i].coord1.z << " <<" << endl;
+			//cout << "Vert 1 >> " << m_objectList[t_index].facets[i].coord1.x << ", " << m_objectList[t_index].facets[i].coord1.y << ", " << m_objectList[t_index].facets[i].coord1.z << " <<" << endl;
             glVertex3f((m_objectList[t_index].facets)[i].coord2.x, (m_objectList[t_index].facets)[i].coord2.y, (m_objectList[t_index].facets)[i].coord2.z);
-			cout << "Vert 2 >> " << m_objectList[t_index].facets[i].coord2.x << ", " << m_objectList[t_index].facets[i].coord2.y << ", " << m_objectList[t_index].facets[i].coord2.z << " <<" << endl;
+			//cout << "Vert 2 >> " << m_objectList[t_index].facets[i].coord2.x << ", " << m_objectList[t_index].facets[i].coord2.y << ", " << m_objectList[t_index].facets[i].coord2.z << " <<" << endl;
             glVertex3f((m_objectList[t_index].facets)[i].coord3.x, (m_objectList[t_index].facets)[i].coord3.y, (m_objectList[t_index].facets)[i].coord3.z);
-			cout << "Vert 3 >> " << m_objectList[t_index].facets[i].coord3.x << ", " << m_objectList[t_index].facets[i].coord3.y << ", " << m_objectList[t_index].facets[i].coord3.z << " <<" << endl;
+			//cout << "Vert 3 >> " << m_objectList[t_index].facets[i].coord3.x << ", " << m_objectList[t_index].facets[i].coord3.y << ", " << m_objectList[t_index].facets[i].coord3.z << " <<" << endl;
             glEnd();
             break;
 

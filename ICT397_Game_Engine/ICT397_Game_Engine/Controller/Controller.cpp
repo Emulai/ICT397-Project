@@ -14,6 +14,12 @@ void Controller::ModelTest(string mPath, int iNdex)
 	m_model.LoadModels(mPath, iNdex);
 	m_modelIsLoaded = true;
 	}
+	m_model.ObjectTypeTest();
+}
+
+Model* Controller::GetModel()
+{
+	return &m_model;
 }
 
 void Controller::GameCtrl(float t_x, float t_z, float t_lx, float t_lz){

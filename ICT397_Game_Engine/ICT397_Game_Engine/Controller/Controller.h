@@ -28,6 +28,8 @@ public:
         */
 	void ModelTest(string mPath, int iNdex);
 
+	Model* GetModel();
+
 	void GameCtrl(float t_x, float t_z, float t_lx, float t_lz);
 
 	/////////////////////

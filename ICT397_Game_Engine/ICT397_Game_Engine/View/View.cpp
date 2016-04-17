@@ -14,7 +14,7 @@ void View::LoadModel(string t_modelPath, const int t_index)
 void View::Render()
 {
 
-	
+	m_off.Draw(0);
 
 	//Render model from reference list created when models are read
 	//REFERENCE LIST NOT IMPLEMENTED
