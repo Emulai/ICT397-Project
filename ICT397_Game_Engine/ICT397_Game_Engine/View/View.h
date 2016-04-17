@@ -1,6 +1,7 @@
 #ifndef VIEW_H
 #define VIEW_H
 
+//#include "..\Model\Objloader.h"
 #include <iostream>
 #include <GL/glut.h>
 
@@ -26,7 +27,7 @@ public:
         * @param int t_modelReference - Model Reference number
         * @return void
         */
-	void Render(int t_modelReference);
+	void Render();
 
 	void GameView(float t_x, float t_z, float t_lx, float t_lz);
 
@@ -34,7 +35,6 @@ public:
 	//Function to DISPLAY menus here
 	//Menu INTERACTION in Controller
 	//////////////////////////
-
 	void SetLocalWindowSize(float t_newWindowWidth, float t_newWindowHeight);
 
 	void EnterMenuState();
@@ -59,6 +59,12 @@ public:
 private:
 
 	float m_windowWidth, m_windowHeight;
+
+	//objloader obj;
+
+	//bool loaded;
+
+	//int cube;
 
 };
 

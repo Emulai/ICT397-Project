@@ -1,11 +1,21 @@
 #include "View.h"
 
-View::View(){
+View::View()
+{
+	//loaded = false;
 }
 
 
-void View::Render(int t_modelReference)
+void View::Render()
 {
+
+	/*
+	{
+		cube = obj.load("..\Model\Meshes\colMonkey.obj");
+		loaded = true;
+	}
+
+	glCallList(cube);*/
 
 	//Render model from reference list created when models are read
 	//REFERENCE LIST NOT IMPLEMENTED
