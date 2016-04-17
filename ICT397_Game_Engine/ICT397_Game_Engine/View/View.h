@@ -33,9 +33,9 @@ public:
 	//Menu INTERACTION in Controller
 	//////////////////////////
 
-	void SetLocalWindowSize(float newWindowWidth, float newWindowHeight){
-		m_windowWidth = newWindowWidth;
-		m_windowHeight = newWindowHeight;
+	void SetLocalWindowSize(float t_newWindowWidth, float t_newWindowHeight){
+		m_windowWidth = t_newWindowWidth;
+		m_windowHeight = t_newWindowHeight;
 	}
 
 	void EnterMenuState(){
@@ -106,11 +106,44 @@ public:
 		glEnd();
 	}
 
-	short CheckForButton(int x, int y){
-		if(x >= (2*m_windowWidth/3) && x >= (m_windowWidth/3)){
 
+	/****************************************
+	 * returns a short indicating what button was pressed.
+	 * Numbers start with 1 at the bottom button to 5 at the top button
+	 * -1 is a sentinel for no interaction
+	 * takes arguments originating from OpenGL API indicating location of a mouse click on screen
+	 *
+	 * Currently: 1= EXIT, 5=Return (to game state)
+	****************************************/
+	short CheckForButton(int t_x, int t_y){
+		
+		//testing indicates y value is inverted compared to draw location(x is okay apparently)
+		//this conversion fixes that
+		t_y = m_windowHeight-t_y;
+		
+		if(t_x <= (2*m_windowWidth/3) && t_x >= (m_windowWidth/3)){
+			if(t_y <= (2*m_windowHeight/10) && t_y >= (m_windowHeight/10)){
+				std::cout << "Button 1 " << std::endl;//<< m_windowHeight << " : " << 2*m_windowHeight/10 << " " << m_windowHeight/10 << " " << y << std::endl;
+				return(1);
+			}else if(t_y <= (3*m_windowHeight/10) && t_y >= (2*m_windowHeight/10)){
+				std::cout << "Button 2 " << std::endl;//<< m_windowHeight << " : " << 3*m_windowHeight/10 << " " <<2* m_windowHeight/10 << " " << y << std::endl;
+				return(2);
+			}else if(t_y <= (4*m_windowHeight/10) && t_y >= (3*m_windowHeight/10)){
+				std::cout << "Button 3 " << std::endl;//<< m_windowHeight << " : " << 4*m_windowHeight/10 << " " << 3*m_windowHeight/10 << " " << y << std::endl;
+				return(3);
+			}else if(t_y <= (5*m_windowHeight/10) && t_y >= (4*m_windowHeight/10)){
+				std::cout << "Button 4 " << std::endl;//<< m_windowHeight << " : " << 5*m_windowHeight/10 << " " << 4*m_windowHeight/10 << " " << y << std::endl;
+				return(4);
+			}else if(t_y <= (6*m_windowHeight/10) && t_y >= (5*m_windowHeight/10)){
+				std::cout << "Button 5 " << std::endl;//<< m_windowHeight << " : " << 6*m_windowHeight/10 << " " << 5*m_windowHeight/10 << " " << y  << std::endl;
+				return(5);
+			}else{
+				std::cout << "NO BUTTON (internal) " << std::endl;//<< m_windowHeight << " : " << 6*m_windowHeight/10 << " " << m_windowHeight/10 << " " << y  ;
+				return(-1);
+			}
 		}
-		return(0);
+		std::cout << "NO BUTTON (external)" << std::endl;//<<m_windowWidth << " : " << 2*m_windowWidth/3 << " " << m_windowWidth/3 << " " << x 
+		return(-1);
 	}
 
 	float GetWindowWidth(){

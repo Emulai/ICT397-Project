@@ -222,7 +222,9 @@ void mouseButton(int button, int state, int x, int y) {
 		}
 	}else{//ie menuState
 		if (button == GLUT_LEFT_BUTTON) {
-			g_controller.MenuPress(x,y);
+			if(state == GLUT_DOWN){//only call MenuPress when pressed down, not on release
+				g_controller.MenuPress(x,y);
+			}
 		}
 	}
 }
@@ -256,7 +258,7 @@ int main(int argc, char* argv[]) {
 	// enter GLUT event processing cycle
 	glutMainLoop();
 
-	return 1;
+	return 0;
 }
 
 /*int main(int argc, char **argv) {

@@ -36,12 +36,25 @@ public:
 		m_view.MenuView();
 	}
 
-	void MenuPress(int x, int y){
-		m_view.CheckForButton(x, y);
+	void MenuPress(int t_x, int t_y){
+		short l_actionType;
+		extern short g_gameState;
+
+		l_actionType = m_view.CheckForButton(t_x, t_y);
+
+		switch(l_actionType){
+			//terminate program
+			case 1: exit(0);
+				break;
+			//Exit menu to game state
+			case 5: g_gameState = 0;
+				EnterGameState();
+				break;
+		}
 	}
 
-	void MenuInit(float windowWidth, float windowHeight){
-		m_view.SetLocalWindowSize(windowWidth, windowHeight);
+	void MenuInit(float t_windowWidth, float t_windowHeight){
+		m_view.SetLocalWindowSize(t_windowWidth, t_windowHeight);
 	}
 
 	float GetWindowWidth(){
@@ -60,9 +73,9 @@ public:
 
 		glLoadIdentity();
 
-		double ratio =  GetWindowWidth() * 1.0 / GetWindowHeight();
+		double l_ratio =  GetWindowWidth() * 1.0 / GetWindowHeight();
 
-		gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+		gluPerspective(45.0f, l_ratio, 0.1f, 100.0f);
 		cout << "Switching to game state" <<endl;
 		glEnable(GLUT_DEPTH);
 
