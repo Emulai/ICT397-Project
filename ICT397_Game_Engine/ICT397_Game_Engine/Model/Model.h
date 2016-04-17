@@ -1,12 +1,16 @@
 #ifndef MODEL_H
 #define MODEL_H
-
+#include <cstdio>
 #include <iostream>
-
+#include <lua.hpp>
 #include "GameAssetFactory.h"
 #include "..\View\View.h"
-
+#pragma comment(lib, "lua5.1.lib")
+#pragma comment(lib, "luabindd.lib")
 using namespace std;
+
+#include <cstdio>
+
 
 
 class Model
@@ -66,8 +70,9 @@ public:
         * @return void
         */
 	void SendToView();
-
-	
+	//int multiply(int a, int b);
+	//int cpp_Multiply(lua_State* luaVM);
+	void LuaSettings();	
 
 	//////////////////////
 	//Checkpoint system here

@@ -1,7 +1,12 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
+
 #include <string.h>
+
+#include<iostream>
+
+
 #include "..\View\View.h"
 #include "..\Model\Model.h"
 
@@ -29,10 +34,30 @@ public:
         */
 	void ModelTest(string mPath, int iNdex);
 
+	void GameCtrl(float t_x, float t_z, float t_lx, float t_lz);
+
 	/////////////////////
 	//INTERACTION with menu here
 	//Menu DISPLAY is in View
 	/////////////////////
+	void MenuCtrl();
+
+	void Credits();
+
+	void Options();
+
+	void ListCheckpoints();
+
+	void MenuPress(int t_x, int t_y);
+
+	void MenuInit(float t_windowWidth, float t_windowHeight);
+
+	float GetWindowWidth();
+	float GetWindowHeight();
+
+	void EnterMenuState();
+
+	void EnterGameState();
 
 private:
 
