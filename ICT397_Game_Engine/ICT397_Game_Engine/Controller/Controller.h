@@ -36,6 +36,20 @@ public:
 		m_view.MenuView();
 	}
 
+	void Credits(){
+		std::cout << "TODO: ADD CREDITS" << std::endl;
+	}
+
+	void Options(){
+		std::cout << "TODO: ADD OPTIONS" << std::endl;
+	}
+
+	void ListCheckpoints(){
+		std::cout << "TODO: ADD SAVE LIST" << std::endl;
+		std::cout << "TODO: ADD SAVE OPTION" << std::endl;
+		std::cout << "TODO: ADD LOAD OPTION" << std::endl;
+	}
+
 	void MenuPress(int t_x, int t_y){
 		short l_actionType;
 		extern short g_gameState;
@@ -45,6 +59,12 @@ public:
 		switch(l_actionType){
 			//terminate program
 			case 1: exit(0);
+				break;
+			case 2: ListCheckpoints();
+				break;
+			case 3: Credits();
+				break;
+			case 4: Options();
 				break;
 			//Exit menu to game state
 			case 5: g_gameState = 0;
