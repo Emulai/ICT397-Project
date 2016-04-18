@@ -3,7 +3,7 @@
 #include <GL/glut.h>
 #include <stdlib.h> //Standard library - c library
 #include <time.h>
-//#include <InputManager.h>
+#include <lua.hpp>
 
 #include <stdlib.h>
 
@@ -242,8 +242,91 @@ void mouseButton(int button, int state, int x, int y) {
 	}
 }
 
+void setArray(string t_descript, int t_index, int t_pVecX, int t_pVecY, int t_pVecZ, int t_pRotX, int t_pRotY, int t_pRotZ, string t_pmodelRef, string t_paiPath, int t_phealth, bool l_phostile, bool l_pstatic)
+{
+	//cout << t_descript << t_index << t_pVecX << t_pVecY << t_pVecZ << t_pRotX << t_pRotY << t_pRotZ << t_pmodelRef << t_paiPath << t_phealth << l_phostile << l_pstatic << endl;
+	g_controller.GetModel()->SetGOSize(16);
+	g_controller.GetModel()->CreateGameObject(t_descript, t_index, t_pVecX, t_pVecY, t_pVecZ, t_pRotX, t_pRotY, t_pRotZ, t_pmodelRef, t_paiPath, t_phealth, l_phostile, l_pstatic);
+
+}
+
+int cpp_Add(lua_State* luaVM)
+{ 
+	//determine number of params on the stack
+    int numParams=lua_gettop(luaVM);
+    if(numParams!=13) {
+	   cout<<"not enough params"<<endl;
+	   return 0;
+    }                                                 
+    if(!lua_isstring(luaVM,1)||!lua_isnumber(luaVM,2)||!lua_isnumber(luaVM,3)||!lua_isnumber(luaVM,4)||!lua_isnumber(luaVM,5)||!lua_isnumber(luaVM,6)||!lua_isnumber(luaVM,7)||!lua_isnumber(luaVM,8)||!lua_isstring(luaVM,9)||!lua_isstring(luaVM,10)||!lua_isnumber(luaVM,11)||!lua_isboolean(luaVM,12)||!lua_isboolean(luaVM,13)){
+	  cout<<"bad params"<<endl;
+	  return 0;
+	}
+
+    //pull params off stack
+	const char* t_descript=(const char*)lua_tostring(luaVM,1);
+	int t_index=(int)lua_tonumber(luaVM,2);
+	int t_pVecX=(int)lua_tonumber(luaVM,3);
+	int t_pVecY=(int)lua_tonumber(luaVM,4);
+    int t_pVecZ=(int)lua_tonumber(luaVM,5);
+	int t_pRotX=(int)lua_tonumber(luaVM,6);
+	int t_pRotY=(int)lua_tonumber(luaVM,7);
+    int t_pRotZ=(int)lua_tonumber(luaVM,8);
+	const char* t_pmodelRef=(const char*)lua_tostring(luaVM,9);
+	const char* t_paiPath=(const char*)lua_tostring(luaVM,10);
+	int t_phealth=(int)lua_tonumber(luaVM,11);
+	bool l_phostile=(bool)lua_toboolean(luaVM,12);
+	bool l_pstatic=(bool)lua_toboolean(luaVM,13);
+
+   //call the real function
+   setArray(t_descript, t_index, t_pVecX, t_pVecY, t_pVecZ, t_pRotX, t_pRotY, t_pRotZ, t_pmodelRef, t_paiPath, t_phealth, l_phostile, l_pstatic);
+   //push result onto the stack
+   //lua_pushnumber(luaVM,result);
+   return 1;  //return the number of values returned
+}
+
+
 int main(int argc, char* argv[]) {
 	
+	//create lua state
+    lua_State* L = lua_open();
+    if (L==NULL){
+       cout<<"Error Initializing lua"<<endl;;
+       return -1;
+    }
+
+		lua_register(L, "cpp_Add", cpp_Add);
+		lua_register(L, "cpp_Add1", cpp_Add);
+		lua_register(L, "cpp_Add2", cpp_Add);
+		lua_register(L, "cpp_Add3", cpp_Add);
+		lua_register(L, "cpp_Add4", cpp_Add);
+		lua_register(L, "cpp_Add5", cpp_Add);
+		lua_register(L, "cpp_Add6", cpp_Add);
+		lua_register(L, "cpp_Add7", cpp_Add);
+		lua_register(L, "cpp_Add8", cpp_Add);
+		lua_register(L, "cpp_Add9", cpp_Add);
+		lua_register(L, "cpp_Add10", cpp_Add);
+		lua_register(L, "cpp_Add11", cpp_Add);
+		lua_register(L, "cpp_Add12", cpp_Add);
+		lua_register(L, "cpp_Add13", cpp_Add);
+		lua_register(L, "cpp_Add14", cpp_Add);
+		lua_register(L, "cpp_Add15", cpp_Add);
+		
+	// reister the wrapper function
+
+    // load standard lua library functions
+    luaL_openlibs(L);
+
+	// load and run Lua script
+    if (!luaL_dofile(L, "script4.lua" )){
+		cout<<"error opening file\n";
+	
+	    //getchar(); return 1;
+	}
+
+    lua_close(L);
+    //getchar();
+	//return 0;
 
 	// init GLUT and create window
 	glutInit(&argc, argv);

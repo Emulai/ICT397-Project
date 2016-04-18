@@ -18,6 +18,9 @@
     <ClCompile Include="Model\NonPlayerCharacter.cpp" />
     <ClCompile Include="Model\Player.cpp" />
     <ClCompile Include="Model\SceneObject.cpp" />
+    <ClCompile Include="View\Camera.cpp" />
+    <ClCompile Include="View\Input.cpp" />
+    <ClCompile Include="View\Mat.cpp" />
     <ClCompile Include="View\OffLoader.cpp" />
     <ClCompile Include="View\View.cpp" />
   </ItemGroup>
@@ -29,6 +32,9 @@
     <ClInclude Include="Model\NonPlayerCharacter.h" />
     <ClInclude Include="Model\Player.h" />
     <ClInclude Include="Model\SceneObject.h" />
+    <ClInclude Include="View\Camera.h" />
+    <ClInclude Include="View\Input.h" />
+    <ClInclude Include="View\Mat.h" />
     <ClInclude Include="View\OffLoader.h" />
     <ClInclude Include="View\View.h" />
   </ItemGroup>
