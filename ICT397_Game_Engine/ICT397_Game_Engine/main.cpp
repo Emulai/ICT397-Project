@@ -9,7 +9,7 @@
 
 //Library Headers
 #include <math.h>
-#include <GL/glut.h> //
+#include <GL/freeglut.h> //
 #include <stdlib.h> //Standard library - c library
 #include <time.h>
 
@@ -80,7 +80,7 @@ void changeSize(int t_w, int t_h) {
 
 	if(g_gameState ==0){
 		// Set the correct perspective.
-		gluPerspective(45.0f, ratio, 0.1f, 100.0f);
+		gluPerspective(45.0f, ratio, 0.1f, 1000.0f);
 	}else{// ie g_gameState ==1
 		gluOrtho2D(0.0f, g_controller.GetWindowWidth(), 0.0f, g_controller.GetWindowHeight());
 		g_controller.MenuInit(g_controller.GetWindowWidth(), g_controller.GetWindowHeight());
@@ -131,11 +131,20 @@ void renderScene(void) {
 
 		checkUp(deltaUp);
 
-		glPushMatrix();
-		glScalef(500, 500, 500);
-		glColor3f(0.0f, 0.0f, 1.0f);
+		/*glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		glLoadIdentity();*/
+		
 		g_controller.ModelTest("View\\bone.off", 0);
+
+		glPushMatrix();
+		glMatrixMode(GL_MODELVIEW);
+		glScalef(50.0f, 50.0f, 50.0f);
+		glColor3f(0.0f, 0.0f, 1.0f);
+		glTranslatef(-30.0f, 40.0f, 0.0f);
+		g_controller.GetView()->Render();
 		glPopMatrix();
+		//glMatrixMode(GL_PROJECTION);
 
 		g_controller.GameCtrl(x, z, lx, lz);
 	}else{//state==1 ie menu
@@ -239,7 +248,7 @@ int main(int argc, char* argv[]) {
 	// init GLUT and create window
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(100,100);
+	glutInitWindowPosition(5,5);
 	glutInitWindowSize(1280,960);
 	glutCreateWindow("ICT397_Game_Engine");
 

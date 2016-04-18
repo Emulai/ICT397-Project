@@ -22,6 +22,11 @@ Model* Controller::GetModel()
 	return &m_model;
 }
 
+View* Controller::GetView()
+{
+	return &m_view;
+}
+
 void Controller::GameCtrl(float t_x, float t_z, float t_lx, float t_lz){
 	m_view.GameView(t_x, t_z, t_lx, t_lz);
 }
