@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <GL/glut.h>
+#include <cassert>
 #include "OffLoader.h"
+#include "..\Libraries\bullet3-2.83.7\bullet3-2.83.7\examples\ThirdPartyLibs\Wavefront\tiny_obj_loader.h"
 
 class View
 {
@@ -70,7 +72,7 @@ private:
 
 	//objloader obj;
 
-	//bool loaded;
+	bool loaded;
 
 	//int cube;
 

@@ -29,6 +29,7 @@ public:
 	void ModelTest(string mPath, int iNdex);
 
 	Model* GetModel();
+	View* GetView();
 
 	void GameCtrl(float t_x, float t_z, float t_lx, float t_lz);
 

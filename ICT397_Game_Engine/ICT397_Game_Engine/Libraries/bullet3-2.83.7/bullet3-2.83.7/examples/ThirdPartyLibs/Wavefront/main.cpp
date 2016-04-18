@@ -12,17 +12,17 @@ static bool
 	)
 {
 
-	
+
 	const char* prefix[]={"./data/","../data/","../../data/","../../../data/","../../../../data/"};
 	char fullPath[1024];
 	int index=-1;
 	{
-		
+
 		int numPrefixes = sizeof(prefix)/sizeof(char*);
 
 		for (int i=0;i<numPrefixes;i++)
 		{
-			
+
 			sprintf(fullPath,"%s%s",prefix[i],fileName);
 			FILE* f;
 			f = fopen(fullPath,"r");
@@ -31,7 +31,7 @@ static bool
 				index=i;
 				fclose(f);
 				break;
-				
+
 			}
 		}
 	}
@@ -101,7 +101,7 @@ int	main(	int argc,	char **argv)
 {
 //	assert(true == TestLoadObj("cornell_box.obj",true));
 //	assert(true == TestLoadObj("cube.obj",true));
-	assert(true==TestLoadObj("samurai_monastry.obj",false));
-	assert(true==TestLoadObj("teddy2_VHACD_CHs.obj",true));
+	//assert(true==TestLoadObj("colCube.obj",false));
+	assert(true==TestLoadObj("colMonkey.obj",true));
 	return 0;
 }

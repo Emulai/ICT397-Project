@@ -15,7 +15,7 @@ public:
 
 	string Load(string t_modelPath, int t_index);
 
-	void Draw(const int index);
+	void Draw(const int t_index);
 
 	void SetModelNum(int t_size);
 

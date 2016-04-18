@@ -68,9 +68,6 @@
     <ClInclude Include="Model\SceneObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model\Objloader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Model\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>

@@ -70,7 +70,7 @@ void Model::ObjectTypeTest()
 		m_tested = true;
 	}
 
-	m_view->Render();
+	//m_view->Render();
 }
 
 void Model::LoadModels(string mPath, int iNdex)
