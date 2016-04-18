@@ -56,6 +56,11 @@ int Player::Health() const
 	return m_health;
 }
 
+int Player::Index() const
+{
+	return m_index;
+}
+
 bool Player::IsHostile() const
 {
 	cout << "Player cannot be hostile towards self!" << endl;
@@ -123,6 +128,11 @@ void Player::AIPath(string t_aiPath)
 void Player::Health(int t_health)
 {
 	m_health = t_health;
+}
+
+void Player::Index(int t_index)
+{
+	m_index = t_index;
 }
 
 void Player::IsHostile(bool t_hostility)

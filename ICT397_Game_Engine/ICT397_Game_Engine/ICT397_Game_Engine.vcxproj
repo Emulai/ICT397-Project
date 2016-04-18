@@ -27,7 +27,6 @@
     <ClInclude Include="Model\GameObject.h" />
     <ClInclude Include="Model\Model.h" />
     <ClInclude Include="Model\NonPlayerCharacter.h" />
-    <ClInclude Include="Model\ObjectType.h" />
     <ClInclude Include="Model\Player.h" />
     <ClInclude Include="Model\SceneObject.h" />
     <ClInclude Include="View\OffLoader.h" />

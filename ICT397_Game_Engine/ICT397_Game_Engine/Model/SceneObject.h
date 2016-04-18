@@ -22,6 +22,7 @@ public:
 	virtual string AIPath() const;
 
 	virtual int Health() const;
+	virtual int Index() const;
 
 	virtual bool IsHostile() const;
 	virtual bool Staticity() const;
@@ -41,6 +42,7 @@ public:
 	virtual void AIPath(string t_aiPath);
 
 	virtual void Health(int t_health);
+	virtual void Index(int t_index);
 
 	virtual void IsHostile(bool t_hostility);
 	virtual void Staticity(bool t_staticity);
@@ -50,6 +52,8 @@ private:
 	Vector3 m_transform, m_rotation;
 
 	string m_modelPath;
+
+	int m_index;
 
 	bool m_staticity;
 
