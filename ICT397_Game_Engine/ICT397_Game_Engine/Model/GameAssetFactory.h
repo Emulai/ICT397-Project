@@ -1,7 +1,9 @@
 #ifndef GAMEASSETFACTORY_H
 #define GAMEASSETFACTORY_H
 
-#include "ObjectType.h"
+#include "Player.h"
+#include "NonPlayerCharacter.h"
+#include "SceneObject.h"
 
 class GameAssetFactory
 {

@@ -57,6 +57,11 @@ int SceneObject::Health() const
 	return 0;
 }
 
+int SceneObject::Index() const
+{
+	return m_index;
+}
+
 bool SceneObject::IsHostile() const
 {
 	cout << "Do you really think this box/rock hates you?" << endl;
@@ -123,6 +128,11 @@ void SceneObject::AIPath(string t_aiPath)
 void SceneObject::Health(int t_health)
 {
 	cout << "These are some seriously unhealthy boxes. Because they Don't. Have. Health." << endl;
+}
+
+void SceneObject::Index(int t_index)
+{
+	m_index = t_index;
 }
 
 void SceneObject::IsHostile(bool t_hostility)

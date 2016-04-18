@@ -26,6 +26,7 @@ public:
 	virtual string AIPath() const = 0;
 
 	virtual int Health() const = 0;
+	virtual int Index() const = 0;
 
 	virtual bool IsHostile() const = 0;
 	virtual bool Staticity() const = 0;
@@ -45,6 +46,7 @@ public:
 	virtual void AIPath(string t_aiPath) = 0;
 
 	virtual void Health(int t_health) = 0;
+	virtual void Index(int t_index) = 0;
 
 	virtual void IsHostile(bool t_hostility) = 0;
 	virtual void Staticity(bool t_staticity) = 0;
