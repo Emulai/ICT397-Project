@@ -6,6 +6,7 @@
 #include <lua.hpp>
 #include "GameAssetFactory.h"
 #include "..\View\View.h"
+#include "Memento.h"
 #pragma comment(lib, "lua5.1.lib")
 #pragma comment(lib, "luabindd.lib")
 using namespace std;
