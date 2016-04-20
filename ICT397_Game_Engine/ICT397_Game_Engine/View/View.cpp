@@ -2,7 +2,7 @@
 
 View::View()
 {
-	loaded = false;
+
 }
 
 void View::LoadModel(string t_modelPath, const int t_index)

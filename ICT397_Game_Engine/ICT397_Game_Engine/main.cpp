@@ -3,7 +3,7 @@
 #include <GL/glut.h>
 #include <stdlib.h> //Standard library - c library
 #include <time.h>
-#include <lua.hpp>
+#include "Model\Lua\lua.hpp"
 
 #include <stdlib.h>
 
@@ -135,7 +135,7 @@ void renderScene(void) {
 
 		glLoadIdentity();*/
 		
-		g_controller.ModelTest("View\\bone.off", 0);
+		g_controller.ModelLoad("Meshes\\bone.off", 0);
 
 		glPushMatrix();
 		glMatrixMode(GL_MODELVIEW);

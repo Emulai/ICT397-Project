@@ -20,17 +20,46 @@ public:
 	Controller();
 
 	/**
-        * @brief Runs the model test
+        * @brief Loads models called in main
         *
-        * This function calls a function in Model called ObjectTypeTest.
+        * This function loads models specified in main.
         *
+		* @param string t_modelPath - Model path
+		* @param int t_index - Array index
         * @return void
         */
-	void ModelTest(string mPath, int iNdex);
+	void ModelLoad(string t_modelPath, int t_index);
 
+	/**
+        * @brief Returns Model
+        *
+        * Returns a pointer to this instance of Model
+        *
+        * @return Model* - Pointer to Model instance
+        */
 	Model* GetModel();
+
+	/**
+        * @brief Returns View
+        *
+        * Returns a pointer to this instance of View
+        *
+        * @return View* - Pointer to View instance
+        */
 	View* GetView();
 
+	/**
+        * @brief Passer to View
+        *
+        * Should make use of GetView in calling function,
+		* passes parameters to GameView in View
+        *
+		* @param float t_x
+		* @param float t_z
+		* @param float t_lx
+		* @param float t_lz
+        * @return void
+        */
 	void GameCtrl(float t_x, float t_z, float t_lx, float t_lz);
 
 	/////////////////////
@@ -58,9 +87,22 @@ public:
 
 private:
 
+	/** 
+	 *	Class Member
+	 *	This variable is an instance of Model
+	 */
 	Model m_model;
+
+	/** 
+	 *	Class Member
+	 *	This variable is an instance of View
+	 */
 	View m_view;
 
+	/** 
+	 *	Class Member
+	 *	This variable ensures model files are read only once
+	 */
 	bool m_modelIsLoaded;
 };
 

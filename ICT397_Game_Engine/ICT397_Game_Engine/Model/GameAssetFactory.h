@@ -9,7 +9,15 @@ class GameAssetFactory
 {
 public:
 
-	static GameObject *NewGameObject(const string &description);
+	/**
+        * @brief Returns View
+        *
+        * Returns a pointer to either a Player, NPC or Scene GameObject
+        *
+		* @param const string t_description - GameObject type
+        * @return GameObject* - A pointer to a GameObject instance
+        */
+	static GameObject *NewGameObject(const string &t_description);
 
 };
 
