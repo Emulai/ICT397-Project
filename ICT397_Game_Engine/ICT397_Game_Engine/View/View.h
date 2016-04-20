@@ -20,19 +20,34 @@ public:
         */
 	View();
 
+	/**
+        * @brief Loads models from file
+        *
+        * This function calls loaders' load functions
+        *
+        * @param string t_modelPath - Model Path
+		* @param const int t_index - Array index
+        * @return void
+        */
 	void LoadModel(string t_modelPath, const int t_index);
 
 	/**
-        * @brief Renders models from the model list
+        * @brief Renders models
         *
-        * This function sets the Vector3 for transform of the GameObject to that supplied
-        * by the client program
+        * This function renders loaded models
         *
-        * @param int t_modelReference - Model Reference number
         * @return void
         */
 	void Render();
 
+	/**
+        * @brief Sets max num of Objects in array
+        *
+        * This function sets max array size
+        *
+		* @param int t_size - Array size
+        * @return void
+        */
 	void SetModelNum(int t_size);
 
 	void GameView(float t_x, float t_z, float t_lx, float t_lz);
@@ -66,15 +81,17 @@ private:
 
 	float m_windowWidth, m_windowHeight;
 
+	/** 
+	 *	Class Member
+	 *	This variable is an instance of OffLoader
+	 */
 	OffLoader m_off;
 
+	/** 
+	 *	Class Member
+	 *	This variable holds debug strings from loaders
+	 */
 	string m_debug;
-
-	//objloader obj;
-
-	bool loaded;
-
-	//int cube;
 
 };
 

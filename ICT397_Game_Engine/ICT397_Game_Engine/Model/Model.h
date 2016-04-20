@@ -3,7 +3,7 @@
 
 #include <cstdio>
 #include <iostream>
-#include <lua.hpp>
+#include "Lua\lua.hpp"
 #include "GameAssetFactory.h"
 #include "..\View\View.h"
 #include "Memento.h"
@@ -47,34 +47,49 @@ public:
         */
 	void SetView(View *t_view);
 
+	/**
+        * @brief Sets the size of m_goArray
+        *
+        * This function sets the size of the GameObject array
+        *
+        * @param int t_size - size of GO array
+        * @return void
+        */
 	void SetGOSize(int t_size);
 
+	/**
+        * @brief Creates a GameObject
+        *
+        * Creates a GameObject with specified settings
+        *
+        * @param const string t_description - Type of GameObject (Player, NPC, Scene)
+		* @param int t_index - Array index to store GameObject at
+		* @param float t_transformX - X location
+		* @param float t_transformY - Y location
+		* @param float t_transformZ - Z location
+		* @param float t_rotationX - X rotation
+		* @param float t_rotationY - Y rotation
+		* @param float t_rotationZ - Z rotation
+		* @param string t_modelPath - Location of GameObject model
+		* @param string t_aiPath - Location of GameObject AI
+		* @param int t_health - Health of GameObject
+		* @param bool t_hostility - State of GameObject's hostility towards player
+		* @param bool t_staticity - State of GameObject's staticity (whether it is affected by physics or not)
+        * @return void
+        */
 	void CreateGameObject(const string t_description, int t_index, float t_transformX, float t_transformY, float t_transformZ, float t_rotationX, float t_rotationY, float t_rotationZ, string t_modelPath, string t_aiPath, int t_health, bool t_hostility, bool t_staticity);
 
 	/**
-        * @brief Runs the ObjectType test
+        * @brief Loads in models
         *
-        * This function tests all functions within ObjectType.h and GameObject.h to ensure they
-        * are in working order
-        *
+        * This function passes a string on towards the loader, to load GameObject models. 
+		*
+        * @param string mPath - location of GameObject's model
+		* @param int iNdex - Array index of GameObject
         * @return void
         */
-	void ObjectTypeTest();
+	void LoadModels(string t_modelPath, int t_index);
 
-	void LoadModels(string mPath, int iNdex);
-
-	/**
-        * @brief Passes model references to View
-        *
-        * This function passes the model reference numbers for the player, and for each NPC and
-        * SceneObject to View->Render for rendering
-        *
-        * @return void
-        */
-	void SendToView();
-	//int multiply(int a, int b);
-	//int cpp_Multiply(lua_State* luaVM);
-	void LuaSettings();	
 
 	//////////////////////
 	//Checkpoint system here
@@ -82,27 +97,30 @@ public:
 	//////////////////////
 
 private:
-
-	/**
-        * @brief Obtains data from LUA
-        *
-        * This function uses LUA scripting to retrieve data for the Player, NonPlayerCharacter
-        * and SceneObject classes, initialising them
-        *
-        * @return void
-        */
-	//void SetWithLUA()
-
+	/** 
+	 *	Class Member
+	 *	This variable contains a pointer to an instance of View
+	 */
 	View *m_view;
 
+	/** 
+	 *	Class Member
+	 *	This variable is an instance of GameAssetFactory
+	 */
 	GameAssetFactory m_gAF;
 
+	/** 
+	 *	Class Member
+	 *	This variable is a double pointer to an instance of GameObject
+	 *  and is used as a dynamic array
+	 */
 	GameObject **m_goArray;
 
-	bool m_tested;
-
-	Vector3 m_test;
-
+	/** 
+	 *	Class Member
+	 *	This variable is read in via LUA
+	 *  and is used as the size for the m_goArray
+	 */
 	int m_objectCount;
 
 };

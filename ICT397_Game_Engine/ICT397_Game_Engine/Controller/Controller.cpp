@@ -3,18 +3,16 @@
 Controller::Controller()
 {
 	m_model.SetView(&m_view);
-	m_model.LuaSettings();
 	m_modelIsLoaded = false;
 }
 
-void Controller::ModelTest(string mPath, int iNdex)
+void Controller::ModelLoad(string t_modelPath, int t_index)
 {
 	if(!m_modelIsLoaded)
 	{
-	m_model.LoadModels(mPath, iNdex);
+	m_model.LoadModels(t_modelPath, t_index);
 	m_modelIsLoaded = true;
 	}
-	m_model.ObjectTypeTest();
 }
 
 Model* Controller::GetModel()
